@@ -13,10 +13,6 @@ const server = net.createServer((connection) => {
   connection.pipe(connection);
 });
 
-server.on('Error', (err) => {
-  throw err;
-});
-
 server.listen(port, host, () => {
   console.log('Server opened on ', server.address().address + ':' + server.address().port );
 });
