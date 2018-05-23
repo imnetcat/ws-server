@@ -2,7 +2,7 @@
 
 const net = require('net');
 const port = process.env.PORT || 3000;
-const host = 'server.js';
+const host = __dirname;
 const server = net.createServer((connection) => {
   // 'connection' listener
   console.log('Client connected');
