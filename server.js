@@ -1,18 +1,18 @@
 "use strict";
-const path = require("path");
-const express = require("express");
-const http = require("http");
-const net = require("net");
-const app = express();
-
-const port = process.env.PORT || 3000;
-const host = process.env.HOST || '0.0.0.0';
-console.log('Server  open on ' + host + ':' + port);
-
-var socket = new net.Socket();
-socket.connect(port, host, () => {
-  console.log('Server opened!');
+var app = require('express')();
+var http = require('http').Server(app).listen(80);
+var io = require('sockt.io')(http);
+console.log('---> Server started!');
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
-               
-
-
+io.on('connection', (socket) => {
+  console.log('---> A new user connected');
+  socket.on('message', (data) => {
+    console.log('---> Recieved: ' + data);
+    socket.emit('sendresponse', data);
+  });
+  socket.on('disconnect', () => {
+    console.log('---> User is disconnected');
+  });
+});
