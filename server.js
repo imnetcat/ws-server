@@ -14,7 +14,7 @@ const server = express()
 
 const wss = new SocketServer({ server });
 
-wss.onconnection((ws) => {
+wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.onclose(() => console.log('Client disconnected'));
 });
