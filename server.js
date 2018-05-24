@@ -12,7 +12,7 @@ concole.log('Server  open on ' + host + ':' + port);
 var socket = new net.Socket();
 socket.connect(port, host, () => {
   concole.log('Server opened!');
-}
+});
                
 
 
