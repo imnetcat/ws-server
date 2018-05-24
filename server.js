@@ -6,7 +6,7 @@ const net = require("net");
 const app = express();
 
 const port = process.env.PORT || 3000;
-const host = 'https://ws-server-top.herokuapp.com'; //process.env.HOST || '0.0.0.0';
+const host = process.env.HOST || '0.0.0.0';
 console.log('Server  open on ' + host + ':' + port);
 
 var socket = new net.Socket();
