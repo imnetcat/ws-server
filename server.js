@@ -6,7 +6,7 @@ const WebSocket = require("ws");
 const app = express();
 
 const port = process.env.PORT || 3000;
-const host = process.env.HOST || '127.0.0.1';
+//const host = process.env.HOST || '127.0.0.1';
 
 //initialize a simple http server
 const server = http.createServer(app);
@@ -23,6 +23,6 @@ wss.on('connection', (ws) => {
     ws.send('Hi there, I am a WebSocket server');
 });
 //start our server
-server.listen(port, host, () => {
+server.listen(port, () => {
     console.log('Server opened on ' + server.address().address + ':' + server.address().port +' :3');
 });
