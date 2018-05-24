@@ -5,8 +5,9 @@ const http = require("http");
 const WebSocket = require("ws");
 const app = express();
 
-const PORT = process.env.PORT || 3000;
-const HOST = 'ws-server-top.herokuapp.com';
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || '127.0.0.1';
+
 //initialize a simple http server
 const server = http.createServer(app);
 //initialize the WebSocket server instance
@@ -22,6 +23,6 @@ wss.on('connection', (ws) => {
     ws.send('Hi there, I am a WebSocket server');
 });
 //start our server
-server.listen(PORT, HOST, () => {
+server.listen(port, host, () => {
     console.log('Server opened on ' + server.address() +' :3');
 });
