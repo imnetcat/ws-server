@@ -5,7 +5,7 @@
       const net = require('net');
       const port = process.env.PORT;
       console.log(port);
-      const client = net.createConnection({ port: port }, () => {
+      const client = net.createConnection({ port: port, host: 'https://ws-server-top.herokuapp.com'}, () => {
         // 'connect' listener
         console.log('connected to server!');
         client.write('world!\r\n');
