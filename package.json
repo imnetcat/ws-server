@@ -6,7 +6,6 @@
   },
   "description": "",
   "main": "server.js",
-  "bin": "./echo.sock",
   "keywords": [],
   "author": "",
   "license": "ISC",
