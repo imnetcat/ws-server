@@ -24,5 +24,5 @@ wss.on('connection', (ws) => {
 });
 //start our server
 server.listen(port, host, () => {
-    console.log('Server opened on ' + server.address() +' :3');
+    console.log('Server opened on ' + server.address().address + ':' + server.address().port +' :3');
 });
