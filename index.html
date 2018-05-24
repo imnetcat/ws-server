@@ -1,22 +1,18 @@
-<html>
-  <body>
-    <div id='logs'></div>
-    <script>
-      "use strict";
-      const path = require("path");
-      const express = require("express");
-      const http = require("http");
-      const net = require("net");
-      const app = express();
-
-      const port = process.env.PORT || 3000;
-      const host = process.env.HOST || '0.0.0.0';
-      concole.log('Server opened on ' + host + ':' + port);
-
-      var socket = new net.createConnectiont(port, host, () => {
-        concole.log('Server opened!');
-      }
-    </script>
-  </body>
-</html>
-     
+<script src="socket.io/socket.io.js"></script>
+<script>
+ var socket = io().connect('http://localhost:80');
+ var append = "";
+function send(data){
+ socket.emit('message',data);
+ document.getElementById("sender").value = "";
+};
+ socket.on('sendres',function(data){
+ append+= '<br>[+]'+data;
+ document.getElementById('results').innerHTML=append;
+  
+ });
+</script>
+ 
+<h1>Welcome to the socket io websoket!</h1>
+<input type="text" id="sender" onchange="send(this.value)" placeholder="Send a Message">
+<div id="results"></div>
