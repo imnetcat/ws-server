@@ -1,20 +1,26 @@
 'use strict';
 
-const net = require('net');
-const port = process.env.PORT || 3000;
+//Установка зависимостей
+const express = require('express');
+const SocketServer = require('ws').Server;
 const path = require('path');
-const host = path.join(__dirname, 'index.html');
 
-const server = net.createServer((connection) => {
-  // 'connection' listener
+const port = process.env.PORT || 3000;  //берем порт
+const host = __filename;
+
+const server = express()
+  .use((request, response) => response.sendFile(host) )
+  .listen(port, host, () => console.log(`Listening on ${ PORT }`));
+
+const wss = new SocketServer({ server });
+
+wss.onconnection((ws) => {
   console.log('Client connected');
-  connection.on('End', () => {
-    console.log('Client disconnected');
-  });
-  connection.write('Hello\r\n');
-  connection.pipe(connection);
+  ws.onclose(() => console.log('Client disconnected'));
 });
 
-server.listen(port, host, () => {
-  console.log('Server opened on ', server.address().address + ':' + server.address().port );
-});
+setInterval(() => {
+  wss.clients.forEach((client) => {
+    client.send(new Date().toTimeString());
+  });
+}, 1000);
