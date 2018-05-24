@@ -10,7 +10,7 @@
       const app = express();
 
       const port = process.env.PORT || 3000;
-      const host = 'ws-server-top.herokuapp.com'; //process.env.HOST || '0.0.0.0';
+      const host = process.env.HOST || '0.0.0.0';
       concole.log('Server opened on ' + host + ':' + port);
 
       var socket = new net.createConnectiont(port, host, () => {
