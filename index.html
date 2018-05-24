@@ -2,21 +2,21 @@
   <body>
     <div id='logs'></div>
     <script>
-      const net = require('net');
-      const port = process.env.PORT;
-      console.log(port);
-      const client = net.createConnection({ port: port, host: 'https://ws-server-top.herokuapp.com'}, () => {
-        // 'connect' listener
-        console.log('connected to server!');
-        client.write('world!\r\n');
-      });
-      client.on('data', (data) => {
-        console.log(data.toString());
-        client.end();
-      });
-      client.on('end', () => {
-        console.log('disconnected from server');
-      });
+      "use strict";
+      const path = require("path");
+      const express = require("express");
+      const http = require("http");
+      const net = require("net");
+      const app = express();
+
+      const port = process.env.PORT || 3000;
+      const host = 'ws-server-top.herokuapp.com'; //process.env.HOST || '0.0.0.0';
+      concole.log('Server opened on ' + host + ':' + port);
+
+      var socket = new net.createConnectiont(port, host, () => {
+        concole.log('Server opened!');
+      }
     </script>
   </body>
 </html>
+     
