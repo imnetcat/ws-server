@@ -5,10 +5,7 @@
     "node": "6.2.0"
   },
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "main": "server.js",
   "bin": "./echo.sock",
   "keywords": [],
   "author": "",
