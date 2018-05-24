@@ -6,7 +6,7 @@ const WebSocket = require("ws");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const HOST = 'tcp://ws-server-top.herokuapp.com/server.js';
+const HOST = 'ws-server-top.herokuapp.com';
 //initialize a simple http server
 const server = http.createServer(app);
 //initialize the WebSocket server instance
