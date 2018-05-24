@@ -3,7 +3,9 @@
     <p id='server-time'></p>
     <script>
       const net = require('net');
-      const client = net.createConnection({ port: 8124 }, () => {
+      const port = process.env.PORT;
+      console.log(port);
+      const client = net.createConnection({ port: port }, () => {
         // 'connect' listener
         console.log('connected to server!');
         client.write('world!\r\n');
