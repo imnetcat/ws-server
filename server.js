@@ -1,10 +1,12 @@
 "use strict";
-
+const path = require("path");
 const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+const HOST = __filename;
 //initialize a simple http server
 const server = http.createServer(app);
 //initialize the WebSocket server instance
@@ -14,12 +16,12 @@ wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         //log the received message and send it back to the client
         console.log('received: %s', message);
-        ws.send(`Hello, you sent -> ${message}`);
+        ws.send('Echo -> ' + message);
     });
     //send immediatly a feedback to the incoming connection
     ws.send('Hi there, I am a WebSocket server');
 });
 //start our server
-server.listen(process.env.PORT || 3000, () => {
-    console.log(`Server started on port ${server.address().port} :)`);
+server.listen(PORT, HOST, () => {
+    console.log('Server opened on ' + server.address() +' :3');
 });
