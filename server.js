@@ -7,7 +7,7 @@ server.listen(port, function() {
   console.log('Listening on ' + port);
 });
 
-var io = require('socket.io')(http);
+var io = require('socket.io')(server);
 console.log('---> Server started!');
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
