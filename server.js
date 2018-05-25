@@ -1,6 +1,6 @@
 "use strict";
 var app = require('express')();
-var http = require('http').Server(app).listen(80);
+var http = require('http').Server(app).listen(80, '127.0.0.1');
 var io = require('socket.io')(http);
 console.log('---> Server started!');
 app.get('/', (req, res) => {
