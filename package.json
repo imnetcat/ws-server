@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node server.js"
   },
-  "postinstall": "chmod -R +x node_modules/next/dist/bin/next-* && npm run build",
   "keywords": [],
   "author": "",
   "license": "ISC",
