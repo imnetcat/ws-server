@@ -1,6 +1,12 @@
 "use strict";
 var app = require('express')();
-var http = require('http').Server(app).listen(80, '127.0.0.1');
+var server = require('http').createServer();
+var port = process.env.PORT || 3000;
+
+server.listen(port, function() {
+  console.log('Listening on ' + port);
+});
+
 var io = require('socket.io')(http);
 console.log('---> Server started!');
 app.get('/', (req, res) => {
