@@ -11,7 +11,7 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 //initialize the WebSocket server instance
-const wss = new SocketServer({ server });
+const wss = new WebSocket({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   setInterval(() => {
