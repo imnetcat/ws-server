@@ -6,7 +6,7 @@ const WebSocket = require("ws");
 const app = express();
 
 const port = process.env.PORT || 3000;
-const host = process.env.HOST || '127.0.0.1';
+const host = 'net-cat-server.online';
 
 //initialize a simple http server
 const server = http.createServer(app);
