@@ -4,7 +4,7 @@
     <p id='server-time'></p>
     <script>
       const path = require("path");
-      document.getElementById('configs').innerhTML = __dirfile;
+      document.getElementById('configs').innerhTML = __filename;
       var HOST = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(HOST);
       var el = document.getElementById('server-time');
