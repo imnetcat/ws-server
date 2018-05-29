@@ -11,7 +11,7 @@ const INDEX = path.join(__dirname, "index.html");
 //initialize a simple http server
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log('Listening on ' + location.origin + ':' + PORT));
+  .listen(PORT, () => console.log('Listening on ' + PORT));
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
