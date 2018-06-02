@@ -14,7 +14,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": "*",
-        "ext-mysqlnd": "*"
+        "monolog/monolog": "1.0.*"
     },
     "platform-dev": []
 }
