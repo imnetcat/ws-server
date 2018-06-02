@@ -9,8 +9,8 @@
 
 <script src="socket.js" type="text/javascript"></script>
 
-Server address: <? echo $_SERVER['SERVER_ADDR'] ?><br><br>
-Server port: <? echo $_SERVER['SERVER_PORT'] ?>
+Server address: <br><br>
+Server port: 
 <br /><br />
 <br /><br />
 
@@ -27,9 +27,7 @@ $starttime = round(microtime(true),2);
 echo "GO() ... <br />\r\n";
 
 echo "socket_create ...";
-$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-
-if($socket < 0){
+if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
 } else {
@@ -37,8 +35,8 @@ if($socket < 0){
 }
 
 
-echo "socket_bind on" . $_SERVER['SERVER_ADDR'] . ":" . $_SERVER['SERVER_PORT'] . "...";
-$bind = socket_bind($socket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT']);//привязываем его к указанным ip и порту
+echo "socket_bind on" . "$_SERVER['SERVER_ADDR']" . ":" . "$_SERVER['SERVER_PORT']" . "...";
+$bind = socket_bind($socket, '127.0.0.1', 15777);//привязываем его к указанным ip и порту
 if($bind < 0){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
