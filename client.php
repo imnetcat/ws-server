@@ -22,7 +22,7 @@ Message:
 <br />
 
 Полученные сообщения от веб-сокета: 
-<div id="sock-info" style="border: 1px solid"> </div>
+<div id="sock-info" style="border: 1px solid"> <? $_SERVER['SERVER_ADDR'] ?> </div>
 
 </body>
 </html>
