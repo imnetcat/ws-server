@@ -15,7 +15,7 @@ function go(){
 
 
 	echo "socket_bind ...";
-	$bind = socket_bind($socket, '127.0.0.1', $_SERVER['SERVER_PORT']);//привязываем его к указанным ip и порту
+	$bind = socket_bind($socket, '127.0.0.1');//привязываем его к указанным ip и порту
 	if($bind < 0){
 	    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
 		exit();
