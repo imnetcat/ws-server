@@ -14,8 +14,8 @@ function go(){
 	}
 
 
-	echo "socket_bind ...";
-	$bind = socket_bind($socket, '50.63.202.1', proccess.env.PORT);//привязываем его к указанным ip и порту
+	echo "socket_bind ... to ".$_SERVER['SERVER_ADDR'];
+	$bind = socket_bind($socket, $_SERVER['SERVER_ADDR'], proccess.env.PORT);//привязываем его к указанным ip и порту
 	if($bind < 0){
 	    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
 		exit();
