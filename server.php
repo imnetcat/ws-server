@@ -1,4 +1,6 @@
 <?
+include "server_port.js";
+
 function go(){
 	$starttime = round(microtime(true),2);
 	echo "GO() ... <br />\r\n";
@@ -14,8 +16,8 @@ function go(){
 	}
 
 
-	echo "socket_bind ... to ".$_SERVER['SERVER_ADDR'];
-	$bind = socket_bind($socket, $_SERVER['SERVER_ADDR'], proccess.env.PORT);//привязываем его к указанным ip и порту
+	echo "socket_bind ...";
+	$bind = socket_bind($socket, '127.0.0.1', server_port());//привязываем его к указанным ip и порту
 	if($bind < 0){
 	    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
 		exit();
