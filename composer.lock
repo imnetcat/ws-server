@@ -8,7 +8,8 @@
   "prefer-stable": false,
   "prefer-lowest": false,
   "platform": {
-    "php": "*"
+    "php": "*",
+    "monolog/monolog": "1.0.*"
   },
   "platform-dev": []
 }
