@@ -1,6 +1,11 @@
-<?
-require "server_port.js";
+<script>
+"use strict";
 
+function server_port(){
+ return process.env.PORT;
+}
+</script>
+<?
 function go(){
 	$starttime = round(microtime(true),2);
 	echo "GO() ... <br />\r\n";
