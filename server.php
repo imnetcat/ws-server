@@ -1,5 +1,5 @@
 <?
-include "server_port.js";
+require "server_port.js";
 
 function go(){
 	$starttime = round(microtime(true),2);
