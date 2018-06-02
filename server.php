@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Siple Web-Socket Client</title>
+</head>
+<body>
+<br><br>
+
+<script src="socket.js" type="text/javascript"></script>
+
+Server address: <? echo $_SERVER['SERVER_ADDR'] ?><br><br>
+Server port: <? echo $_SERVER['SERVER_PORT'] ?>
+<br /><br />
+<br /><br />
+
+Полученные сообщения от сервера: 
+<div id="sock-info" style="border: 1px solid">
 <?
 function go(){
 	$starttime = round(microtime(true),2);
@@ -77,3 +95,7 @@ if (isset($socket)){
     socket_close($socket);
     echo "OK <br />\r\n";
 }
+?>
+  </div>
+</body>
+</html>
