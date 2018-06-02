@@ -8,7 +8,7 @@
     var init = function () {
 		
 		socket = new WebSocket(document.getElementById("sock-addr").value);
-
+                socket.onclose = document.getElementById("sock-info").innerHTML += "Соединение закрыто ^^<br />";
 		socket.onopen = connectionOpen; 
 		socket.onmessage = messageReceived; 
 		//socket.onerror = errorOccurred; 
