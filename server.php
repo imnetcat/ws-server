@@ -4,7 +4,7 @@ function go(){
 	echo "GO() ... <br />\r\n";
 
 	echo "socket_create ...";
-	$socket = socket_create(AF_UNIX, SOCK_STREAM, SOL_TCP);
+	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 	if($socket < 0){
 		echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
@@ -15,7 +15,7 @@ function go(){
 
 
 	echo "socket_bind ...";
-	$bind = socket_bind($socket, __FILE__, proccess.env.PORT);//привязываем его к указанным ip и порту
+	$bind = socket_bind($socket, '50.63.202.1', proccess.env.PORT);//привязываем его к указанным ip и порту
 	if($bind < 0){
 	    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
 		exit();
