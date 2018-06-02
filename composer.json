@@ -11,6 +11,6 @@
     "ext-mysqlnd": "*"
   },
   "scripts": {
-    "command": "@php server.php"
+    "server": "@php server.php"
   }
 }
