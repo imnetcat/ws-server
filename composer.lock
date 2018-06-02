@@ -1,0 +1,14 @@
+{
+  "content-hash": "43ab669275a94823ca184ee2d6d196f3",
+  "packages": [],
+  "packages-dev": [],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": {
+    "php": "*"
+  },
+  "platform-dev": []
+}
