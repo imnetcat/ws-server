@@ -1,18 +1,13 @@
 {
-  "name": "net-cat-server",
-  "version": "1.0.4",
   "authors": [
     {
       "name": "Crazy Hero",
+      "email": "crazyhero019@gmail.com",
       "role": "Developer"
     }
   ],
-  "license": "",
-  "description": "",
-  "scripts": {
-    "start": "php server.php"
-  },
-  "dependencies": {
-    "php": "^5.5"
+  "require" : {
+    "php" : "*",
+    "ext-mysqlnd": "*"
   }
 }
