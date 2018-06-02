@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Siple Web-Socket Client</title>
+  <meta charset="UTF-8" />
+  <title>Siple Web-Socket Client</title>
+  <script async>
+    document.ready( () => {
+      document.detElementById('to_server').onclick( () => {
+        document.location = '/server/server.php';
+      });
+    });
+  </script>
+  <script src="socket.js" type="text/javascript"></script>
 </head>
 <body>
-<br /><br />
-
-<script src="socket.js" type="text/javascript"></script>
-
+<br>
+<br>
+<br>
+<button id="to_server">Go to server</button>
+<br>
 Server address:
 <input id="sock-addr" type="text" value="wss://echo.websocket.org"><br />
 Message:
