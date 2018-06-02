@@ -5,7 +5,7 @@
   <title>Siple Web-Socket Client</title>
   <script async>
     document.addEventListener('DOMContentLoaded', () => {
-      document.detElementById('to_server').onclick( () => {
+      document.getElementById('to_server').onclick( () => {
         document.location = '/server/server.php';
       });
     });
