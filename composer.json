@@ -9,7 +9,7 @@
   "require" : {
     "php" : "*",
     "ext-mysqlnd": "*"
-  }
+  },
   "scripts": {
     "test": [
       "@php server.php"
