@@ -7,6 +7,7 @@
     }
   ],
   "require" : {
-    "php" : "*"
+    "php" : "*",
+    "monolog/monolog": "1.0.*"
   }
 }
