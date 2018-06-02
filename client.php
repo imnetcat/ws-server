@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Siple Web-Socket Client</title>
   <script async>
-    document.ready( () => {
+    document.onready( () => {
       document.detElementById('to_server').onclick( () => {
         document.location = '/server/server.php';
       });
