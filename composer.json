@@ -7,7 +7,6 @@
     }
   ],
   "require" : {
-    "php" : "*",
-    "ext-mysqlnd": "*"
+    "php" : "*"
   }
 }
