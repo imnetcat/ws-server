@@ -18,6 +18,6 @@
     },
     "platform-dev": [],
     "scripts": {
-      "post-dependencies-solving": "@php server.php"
+      "command": "@php server.php"
     }
 }
