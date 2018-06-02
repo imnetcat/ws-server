@@ -16,5 +16,10 @@
         "php": "*",
         "ext-mysqlnd": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "scripts": {
+      "test": [
+        "@php server.php"
+      ]
+    }
 }
