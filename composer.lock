@@ -18,8 +18,6 @@
     },
     "platform-dev": [],
     "scripts": {
-      "test": [
-        "@php server.php"
-      ]
+      "init": "@php server.php"
     }
 }
