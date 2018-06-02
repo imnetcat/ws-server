@@ -11,6 +11,6 @@
     "ext-mysqlnd": "*"
   },
   "scripts": {
-    "post-package-install": "@php server.php"
+    "post-dependencies-solving": "@php server.php"
   }
 }
