@@ -6,7 +6,7 @@
   },
   "description": "",
   "scripts": {
-    "start": "node server.js"
+    "start": "php server.php"
   },
   "keywords": [],
   "author": "",
