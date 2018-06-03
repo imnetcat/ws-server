@@ -24,8 +24,8 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 		      url: "server_actions.php",
 		      data: {
 		      	action: 'create_sock',
-		      	addr: <? echo $address ?>,
-		      	port: <? echo $port ?> ,
+		      	addr: '<? echo $address ?>',
+		      	port: '<? echo $port ?>' ,
 		      },
 		      success: function(data){
             $('#logs').text($('#logs').text + data);
