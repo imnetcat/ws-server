@@ -30,7 +30,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 		      success: function(data){
             $('#logs').text($('#logs').text + data);
           }
-	    	});
+	});
       });
     });
   </script>
