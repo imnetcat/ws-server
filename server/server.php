@@ -26,7 +26,25 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
   exit();
 } else {
   echo "OK <br />\r\n";
-}?>
+}
+
+echo "socket_bind...";
+if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $service_port){
+  echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
+  exit();
+}else{
+  echo "OK <br />\r\n";
+}
+socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);//разрешаем использовать один порт для нескольких соединений
+echo "Listening socket... ";
+if(!socket_listen($socket, 5)){
+  echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
+  exit();
+}else{
+  echo "OK <br />\r\n";
+}
+   
+?>
 </div>
 </body>
 </html>
