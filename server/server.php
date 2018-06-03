@@ -13,8 +13,8 @@ Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR'] ?> </span>
 <br><br>
 Server port: <span id="port">
   <? 
-  list($q, $w, $e, $r, $t, $y, $u, $i, $o, $p) = socket_addrinfo_lookup($_SERVER['SERVER_HOST'])
-  echo $q . " /// " . $w . " /// " . $e . " /// " . $r . " /// " . $t . " /// " . $y . " /// " . $u . " /// " . $i . " /// " . $o . " /// " . $p 
+  list($q, $w) = socket_addrinfo_lookup($_SERVER['SERVER_HOST'])
+  echo "$q  ///  $w ";
   ?></span>
 <br /><br />
 <br /><br />
