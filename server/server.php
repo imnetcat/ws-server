@@ -26,7 +26,7 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
   exit();
 } else {
   echo "OK <br />\r\n";
-}
+}?>
 </div>
 </body>
 </html>
