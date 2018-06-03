@@ -8,7 +8,7 @@
 <br><br>
 <br><br>
 <br><br>
-Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR']; $address = gethostbyname('www.example.com'); echo "    ".$address;?> </span>
+Server address:
 <br><br>
 Server port: 
 <br /><br />
