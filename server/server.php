@@ -19,6 +19,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 <script async>
     $( () => {
       $('#startbtn').click( () => {
+	$('#logs').append($("<p>socket_create ...</p>"));
         $.ajax({
 	        type: "POST",
 		      url: "server_actions.php",
