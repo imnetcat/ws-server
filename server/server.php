@@ -8,9 +8,13 @@
 <br><br>
 <br><br>
 <br><br>
-Server address:
+Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR']; $address = gethostbyname('www.example.com'); echo "    ".$address;?> </span>
 <br><br>
-Server port: 
+Server port: <span id="port">
+  <? 
+  $service_port = getservbyname('ws', 'tcp');
+  echo $service_port;
+  ?></span>
 <br /><br />
 <br /><br />
 
@@ -44,6 +48,22 @@ if(!socket_listen($socket, 5)){
   echo "OK <br />\r\n";
 }
    
+while(true){ //Бесконечный цикл ожидания подключений
+  echo "Waiting... ";
+  $accept = @socket_accept($socket); //Зависаем пока не получим ответа
+  if($accept === false){
+    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
+    usleep(100);
+  } else {
+    echo "OK <br />\r\n";
+    echo "Client \"".$accept."\" has connected<br />\r\n";
+  }
+  $msg = "Hello, Client!";
+  echo "Send to client \"".$msg."\"... ";
+  socket_write($accept, $msg);
+  echo "OK <br />\r\n";
+}
+  
 ?>
 </div>
 </body>
