@@ -8,9 +8,9 @@ switch ($_POST['action']){
       $port = $_POST['port'];
       $create_log = create($addr, $port);
       if($create_log == "Error"){
-        echo "Error: " . socket_strerror(socket_last_error()) . "<br>";
+        echo "Error: " . socket_strerror(socket_last_error());
       }else{
-        echo "Ok <br>";
+        echo "Ok";
       }
       break;
       case 'bind':
