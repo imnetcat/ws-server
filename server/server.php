@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Siple Web-Socket Client</title>
+  <meta charset="UTF-8" />
+  <title>Siple Web-Socket Client</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script async>
+    $( () => {
+      $('#port').text(process.env.PORT);
+    });
+  </script>
 </head>
 <body>
 <br><br>
 <br><br>
 <br><br>
-Server address: <br><br>
-Server port: 
+Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR'] ?> </span>
+<br><br>
+Server port: <span id="port"></span>
 <br /><br />
 <br /><br />
 
