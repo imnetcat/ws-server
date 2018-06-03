@@ -23,7 +23,7 @@ set_time_limit(0);		//Время выполнения скрипта не огр
 ob_implicit_flush();	//Включаем вывод без буферизации
   $n = 1;
   while($n < 65000){
- echo getservbyport($n, "tcp");
+ echo $n . " : " . getservbyport($n, "tcp") "<br>";
   $n = $n + 1;
   }
 ?>
