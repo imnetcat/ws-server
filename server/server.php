@@ -28,7 +28,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 		      	port: '<? echo $port ?>' ,
 		      },
 		      success: function(data){
-            $('#logs').html(data);
+            $('#logs').append($("<p>" + data + "</p>"));
           }
 	});
       });
