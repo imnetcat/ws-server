@@ -11,11 +11,13 @@ switch ($_POST['action']){
         echo "Error: " . socket_strerror(socket_last_error()) . "<br>";
       }else{
         echo $create_log;
-      break
+      }
+      break;
       case 'bind':
-      break
+      break;
       case 'listen':
-      break
+      break;
+      
 };
 
 ?>
