@@ -10,7 +10,7 @@ switch ($_POST['action']){
       if($create_log == "Error"){
         echo "Error: " . socket_strerror(socket_last_error()) . "<br>";
       }else{
-        echo $create_log;
+        echo "Ok <br>";
       }
       break;
       case 'bind':
