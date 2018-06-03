@@ -10,10 +10,7 @@
 <br><br>
 Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR']; $address = gethostbyname('logs.net-cat-server.online'); echo "    ".$address;?> </span>
 <br><br>
-Server port: <span id="port">
-  <? 
-  $service_port = getservbyname('ws', 'tcp');
-  echo $service_port;
+Server port: <span id="port"><? echo $service_port = getservbyname('www', 'tcp');
   ?></span>
 <br /><br />
 <br /><br />
@@ -33,7 +30,7 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
 }
 
 echo "socket_bind...";
-if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT'])){
+if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $service_port)){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
 }else{
