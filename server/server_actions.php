@@ -12,8 +12,6 @@ switch ($_POST['action']){
       }else{
         echo $create_log;
       break;
-    case '':
-      break;
 };
 
 ?>
