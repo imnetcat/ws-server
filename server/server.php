@@ -30,7 +30,7 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
 }
 
 echo "socket_bind...";
-if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $service_port)){
+if(!socket_bind($socket, $address, $service_port)){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
 }else{
