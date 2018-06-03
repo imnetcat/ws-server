@@ -9,12 +9,12 @@
 <br><br>
 <br><br>
 <br><br>
-Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR'] ?> </span>
+Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR']; $address = gethostbyname('www.example.com'); echo "    ".$address;?> </span>
 <br><br>
 Server port: <span id="port">
   <? 
-  list($q, $w) = socket_addrinfo_lookup($_SERVER['SERVER_HOST'])
-  echo "$q  ///  $w ";
+  $service_port = getservbyname('ws', 'tcp');
+  echo $service_port;
   ?></span>
 <br /><br />
 <br /><br />
