@@ -20,7 +20,7 @@ Server port:
 <?
 
 error_reporting(E_ALL); //Выводим все ошибки и предупреждения
-set_time_limit(0);		//Время выполнения скрипта не ограничено
+set_time_limit(10000);		//Время выполнения скрипта не ограничено
 ob_implicit_flush();	//Включаем вывод без буферизации
 
 
@@ -34,7 +34,7 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
 
 
 echo "socket_bind...";
-if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $service_port){
+if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT']){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
 }else{
