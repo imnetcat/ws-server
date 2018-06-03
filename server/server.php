@@ -21,46 +21,11 @@ Server port: <span id="port"><? echo $service_port = getservbyname('www', 'tcp')
 error_reporting(E_ALL); //Выводим все ошибки и предупреждения
 set_time_limit(0);		//Время выполнения скрипта не ограничено
 ob_implicit_flush();	//Включаем вывод без буферизации
-echo "socket_create ...";
-if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
-  echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
-  exit();
-} else {
-  echo "OK <br />\r\n";
-}
-
-echo "socket_bind...";
-if(!socket_bind($socket, $address, $service_port)){
-  echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
-  exit();
-}else{
-  echo "OK <br />\r\n";
-}
-socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);//разрешаем использовать один порт для нескольких соединений
-echo "Listening socket... ";
-if(!socket_listen($socket, 5)){
-  echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
-  exit();
-}else{
-  echo "OK <br />\r\n";
-}
-   
-while(true){ //Бесконечный цикл ожидания подключений
-  echo "Waiting... ";
-  $accept = @socket_accept($socket); //Зависаем пока не получим ответа
-  if($accept === false){
-    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
-    usleep(100);
-  } else {
-    echo "OK <br />\r\n";
-    echo "Client \"".$accept."\" has connected<br />\r\n";
+  $n = 1;
+  while($n < 65000){
+ echo getservbyport($n, "tcp");
+  $n = $n + 1;
   }
-  $msg = "Hello, Client!";
-  echo "Send to client \"".$msg."\"... ";
-  socket_write($accept, $msg);
-  echo "OK <br />\r\n";
-}
-  
 ?>
 </div>
 </body>
