@@ -4,11 +4,6 @@
   <meta charset="UTF-8" />
   <title>Siple Web-Socket Client</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script async>
-    $( () => {
-      $('#port').text(process.env.PORT);
-    });
-  </script>
 </head>
 <body>
 <br><br>
@@ -16,7 +11,11 @@
 <br><br>
 Server address: <span id="addr"> <? echo $_SERVER['SERVER_ADDR'] ?> </span>
 <br><br>
-Server port: <span id="port"></span>
+Server port: <span id="port">
+  <? 
+  list($q, $w, $e, $r, $t, $y, $u, $i, $o, $p) = socket_addrinfo_lookup($_SERVER['SERVER_HOST'])
+  echo $q . " /// " . $w . " /// " . $e . " /// " . $r . " /// " . $t . " /// " . $y . " /// " . $u . " /// " . $i . " /// " . $o . " /// " . $p 
+  ?></span>
 <br /><br />
 <br /><br />
 
@@ -39,8 +38,8 @@ if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
 }
 
 
-echo "socket_bind on" . $_SERVER['SERVER_ADDR'] . ":" . $_SERVER['SERVER_PORT'] . "...";
-if(!socket_bind($socket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT'])){
+echo "socket_bind...";
+if(!socket_bind($socket, $_SERVER['SERVER_ADDR']){
   echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
   exit();
 }else{
