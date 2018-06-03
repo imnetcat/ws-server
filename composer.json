@@ -8,7 +8,7 @@
   ],
   "require" : {
     "php" : "*",
-    "ext-mysqlnd": "*"
+    "ext-sockets": "*"
   },
   "scripts": {
     "server": "@php server.php"
