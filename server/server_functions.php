@@ -6,6 +6,7 @@ function create(){
   } else {
     return $socket;
   }
+  socket_close($socket);
 }
 
 function bind($address, $port){
@@ -28,6 +29,7 @@ function listen($socket){
   }else{
     return "OK";
   }
+  socket_close($socket);
 }
   
 function connect($socket){
@@ -45,6 +47,7 @@ function connect($socket){
   socket_write($accept, $msg);
   echo "OK";
   }
+  socket_close($socket);
 }
   
 ?>
