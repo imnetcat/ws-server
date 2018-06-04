@@ -10,7 +10,7 @@ function create(){
 
 function bind($socket, $address, $port){
   if(!socket_bind($socket, $address, $port)){
-    return "Error: " . socket_strerror(socket_last_error());
+    return "Error: " . socket_last_error();
   }else{
     return "S";
   }
