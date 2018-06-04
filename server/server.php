@@ -23,7 +23,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
     $( () => {
       $('#startbtn').click( () => {
 	$('#logs').append($("<p>socket_create ...</p>"));
-        $('#logs').append($("<p>" + "\"" + <? echo create($address, $port) ?> + "\"" + "</p>"));
+        $('#logs').append($("<p>" + "<? echo create($address, $port) ?>" + "</p>"));
       });
     });
   </script>
