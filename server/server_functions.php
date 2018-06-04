@@ -2,7 +2,7 @@
 
 function create(){
   if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
-    retuen "Error: " . socket_strerror(socket_last_error());
+    return "Error";
   } else {
     return $socket;
   }
