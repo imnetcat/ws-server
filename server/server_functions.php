@@ -8,11 +8,15 @@ function create(){
   }
 }
 
-function bind($socket, $address, $port){
-  if(!socket_bind($socket, $address, $port)){
-    return "Error: " . socket_strerror(socket_last_error());
-  }else{
-    return "OK";
+function bind($address, $port){
+  if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+    return "Error";
+  } else {
+    if(!socket_bind($socket, $address, $port)){
+      return "Error: " . socket_strerror(socket_last_error());
+    }else{
+      return "OK";
+    }
   }
 }
 
