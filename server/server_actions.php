@@ -4,16 +4,21 @@ require_once "server_functions.php";
 
 switch ($_POST['action']){
   case 'create':
-    return create();
+    $socket = create()
+    if($socket == "Error"){
+      echo "Error: ext-sockets is unvalible";
+    }else{
+      echo "Success";
+    }
   break;
   case 'bind':
-    echo bind($_POST['socket'], $_POST['address'], $_POST['port']);
+    echo bind($socket, $_POST['address'], $_POST['port']);
   break;
   case 'listen':
-    echo listen($_POST['socket']);
+    echo listen($socket);
   break;
   case 'connect':
-    echo connect($_POST['socket']);
+    echo connect($socket);
   break; 
 };
 
