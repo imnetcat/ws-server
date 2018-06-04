@@ -41,6 +41,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 		port: <? echo $port ?>
               },
 	      success: function(data){
+		      console.log("111");
                 $('#logs').append($("<p>" + data + "</p>"));
 	        $('#logs').append($("<p>Listening socket...</p>"));
 	        if(data != "Success"){
