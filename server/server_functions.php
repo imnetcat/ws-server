@@ -12,7 +12,7 @@ function bind($socket, $address, $port){
   if(!socket_bind($socket, $address, $port)){
     return "Error: " . socket_strerror(socket_last_error());
   }else{
-    return "Success";
+    return "OK";
   }
 }
 
@@ -21,7 +21,7 @@ function listen($socket){
   if(!socket_listen($socket, 5)){
     return "Error: " . socket_strerror(socket_last_error());
   }else{
-    return "Success";
+    return "OK";
   }
 }
   
@@ -32,13 +32,13 @@ function connect($socket){
     echo "Error: " . socket_strerror(socket_last_error());
     usleep(100);
   } else {
-    echo "Success";
+    echo "Connect accept";
     echo "Client \"".$accept."\" has connected";
   }
   $msg = "Hello, Client!";
   echo "Send to client \"".$msg."\"... ";
   socket_write($accept, $msg);
-  echo "Success";
+  echo "OK";
   }
 }
   
