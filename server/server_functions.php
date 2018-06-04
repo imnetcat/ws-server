@@ -1,17 +1,25 @@
 <?
 
+function create(){
+  if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+    retuen "Error: " . socket_strerror(socket_last_error());
+  } else {
+    return "Success";
+  }
+}
+
 function bind($socket, $address, $port){
   if(!socket_bind($socket, $address, $port)){
-    return "Error: " . socket_last_error();
+    return "Error: " . socket_strerror(socket_last_error());
   }else{
-    return "S";
+    return "Success";
   }
 }
 
 function listen($socket){
   socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);//разрешаем использовать один порт для нескольких соединений
   if(!socket_listen($socket, 5)){
-    return "Error: ".socket_strerror(socket_last_error());
+    return "Error: " . socket_strerror(socket_last_error());
   }else{
     return "Success";
   }
@@ -21,7 +29,7 @@ function connect($socket){
   while(true){ //Бесконечный цикл ожидания подключений
   $accept = @socket_accept($socket); //Зависаем пока не получим ответа
   if($accept === false){
-    echo "Error: ".socket_strerror(socket_last_error());
+    echo "Error: " . socket_strerror(socket_last_error());
     usleep(100);
   } else {
     echo "Success";
