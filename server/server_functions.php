@@ -8,7 +8,7 @@ function bind($socket, $address, $port){
   }
 }
 
-function listing($socket){
+function listen($socket){
   socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);//разрешаем использовать один порт для нескольких соединений
   if(!socket_listen($socket, 5)){
     return "Error: ".socket_strerror(socket_last_error());
