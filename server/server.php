@@ -23,7 +23,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	$('#logs').append($("<p>socket_create ...</p>"));
 	$.ajax({
           type: "POST",
-	  url: "landing_actions.php",
+	  url: "server_actions.php",
 	  data: {
 	    action: 'create'
 	  },
@@ -34,7 +34,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	    }else{
               $.ajax({
               type: "POST",
-	      url: "landing_actions.php",
+	      url: "server_actions.php",
 	      data: {
 	        action: 'bind',
 		address: '<? echo $address ?>',
@@ -47,7 +47,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	        }else{
 	          $.ajax({
                   type: "POST",
-	          url: "landing_actions.php",
+	          url: "server_actions.php",
 	          data: {
 	            action: 'listen',
                   },
@@ -58,7 +58,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 		    }else{
 	              $.ajax({
                       type: "POST",
-	              url: "landing_actions.php",
+	              url: "server_actions.php",
 	              data: {
 	                action: 'connect',
                       },
