@@ -15,16 +15,17 @@ function listing($socket){
   }else{
     return "Success";
   }
+}
   
 function connect($socket){
   while(true){ //Бесконечный цикл ожидания подключений
   $accept = @socket_accept($socket); //Зависаем пока не получим ответа
   if($accept === false){
-    echo "Error: ".socket_strerror(socket_last_error())."<br />\r\n";
+    echo "Error: ".socket_strerror(socket_last_error());
     usleep(100);
   } else {
     echo "Success";
-    echo "Client \"".$accept."\" has connected<br />\r\n";
+    echo "Client \"".$accept."\" has connected";
   }
   $msg = "Hello, Client!";
   echo "Send to client \"".$msg."\"... ";
