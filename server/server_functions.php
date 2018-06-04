@@ -18,6 +18,7 @@ function bind($address, $port){
       return "OK";
     }
   }
+  socket_close($socket);
 }
 
 function listen($socket){
