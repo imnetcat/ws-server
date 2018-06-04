@@ -7,7 +7,7 @@ switch ($_POST['action']){
     if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
       echo "Error";
     } else {
-      echo "Success";
+      echo "OK";
     }
   break;
   case 'bind':
