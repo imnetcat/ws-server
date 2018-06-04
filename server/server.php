@@ -30,7 +30,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	  success: function(data){
             $('#logs').append($("<p>" + data + "</p>"));
             $('#logs').append($("<p>socket_bind...</p>"));
-	    if(data != "Success"){
+	    if(data != "OK"){
 	    }else{
               $.ajax({
               type: "POST",
@@ -46,7 +46,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	      success: function(data){
                 $('#logs').append($("<p>" + data + "</p>"));
 	        $('#logs').append($("<p>Listening socket...</p>"));
-	        if(data != "Success"){
+	        if(data != "OK"){
 	        }else{
 	          $.ajax({
                   type: "POST",
@@ -57,7 +57,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	          success: function(data){
                     $('#logs').append($("<p>" + data + "</p>"));
 	            $('#logs').append($("<p>Waiting...</p>"));
-	            if(data != "Success"){
+	            if(data != "OK"){
 		    }else{
 	              $.ajax({
                       type: "POST",
