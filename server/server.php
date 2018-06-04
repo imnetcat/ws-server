@@ -1,5 +1,3 @@
-<? require_once "server_functions.php"; ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +21,57 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
     $( () => {
       $('#startbtn').click( () => {
 	$('#logs').append($("<p>socket_create ...</p>"));
-        $('#logs').append($("<p>" + <?
-	  if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
-            echo "Error: " . socket_strerror(socket_last_error());
-          }else{
-            echo "Success";
-          } 
-	?> + "</p>"));
+	$.ajax({
+          type: "POST",
+	  url: "landing_actions.php",
+	  data: {
+	    action: 'create'
+	  },
+	  success: function(data){
+            $('#logs').append($("<p>" + data + "</p>"));
+	    if(data != "Success"){
+	    }else{
+              $.ajax({
+              type: "POST",
+	      url: "landing_actions.php",
+	      data: {
+	        action: 'bind',
+		address: '<? echo $address ?>',
+		port: <? echo $port ?>
+              },
+	      success: function(data){
+                $('#logs').append($("<p>" + data + "</p>"));
+	        if(data != "Success"){
+	        }else{
+	          $.ajax({
+                  type: "POST",
+	          url: "landing_actions.php",
+	          data: {
+	            action: 'listen',
+                  },
+	          success: function(data){
+                    $('#logs').append($("<p>" + data + "</p>"));
+	            if(data != "Success"){
+		    }else{
+	              $.ajax({
+                      type: "POST",
+	              url: "landing_actions.php",
+	              data: {
+	                action: 'connect',
+                      },
+	              success: function(data){
+                        $('#logs').append($("<p>" + data + "</p>"));
+	              }
+		      });
+		    }
+		  }
+		  });
+		}
+	      }
+	      });
+	    }
+          }
+	});
         $('#logs').append($("<p>socket_bind...</p>"));
         $('#logs').append($("<p>" + "<? echo bind($socket, $address, $port) ?>" + "</p>"));
 	$('#logs').append($("<p>Listening socket...</p>"));
