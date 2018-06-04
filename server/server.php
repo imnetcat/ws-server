@@ -8,6 +8,7 @@
 <body>
 <br><br>
 <br><br>
+<? if(extension_loaded('ext-sockets')){ echo "Status: ext-sockets ready to use" }else{ echo "Расширение ext-sockets UNVALIBLE !" 
 <br><br>
 Server address: <span id="addr"> <? echo $address = $_SERVER['SERVER_ADDR']; ?> </span>
 <br><br>
