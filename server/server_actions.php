@@ -12,7 +12,18 @@ switch ($_POST['action']){
     }
   break;
   case 'bind':  
-    echo bind($socket, $_POST['address'], $_POST['port']);   
+    function bind($address, $port){
+  if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+    return "Error";
+  } else {
+    if(!socket_bind($socket, $address, $port)){
+      return "Error: " . socket_strerror(socket_last_error());
+    }else{
+      return "OK";
+    }
+  }
+  socket_close($socket);
+}   
   break;
   case 'listen':
     if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
