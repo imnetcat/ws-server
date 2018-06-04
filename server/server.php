@@ -42,6 +42,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
               },
 	      error: function(xhr, status, error){
 		console.log("Error in XHR: " + xhr + "  STATUS:  " + status + "   ERROR:   " + error);
+	      },
 	      success: function(data){
                 $('#logs').append($("<p>" + data + "</p>"));
 	        $('#logs').append($("<p>Listening socket...</p>"));
