@@ -29,6 +29,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	  },
 	  success: function(data){
             $('#logs').append($("<p>" + data + "</p>"));
+            $('#logs').append($("<p>socket_bind...</p>"));
 	    if(data != "Success"){
 	    }else{
               $.ajax({
@@ -41,6 +42,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
               },
 	      success: function(data){
                 $('#logs').append($("<p>" + data + "</p>"));
+	        $('#logs').append($("<p>Listening socket...</p>"));
 	        if(data != "Success"){
 	        }else{
 	          $.ajax({
@@ -51,6 +53,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
                   },
 	          success: function(data){
                     $('#logs').append($("<p>" + data + "</p>"));
+	            $('#logs').append($("<p>Waiting...</p>"));
 	            if(data != "Success"){
 		    }else{
 	              $.ajax({
@@ -72,12 +75,6 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
 	    }
           }
 	});
-        $('#logs').append($("<p>socket_bind...</p>"));
-        $('#logs').append($("<p>" + "<? echo bind($socket, $address, $port) ?>" + "</p>"));
-	$('#logs').append($("<p>Listening socket...</p>"));
-        $('#logs').append($("<p>" + "<? echo listing($socket) ?>" + "</p>"));
-	$('#logs').append($("<p>Waiting...</p>"));
-        $('#logs').append($("<p>" + "<? echo connect($socket) ?>" + "</p>"));
       });
     });
   </script>
