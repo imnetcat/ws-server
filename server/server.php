@@ -1,3 +1,5 @@
+<? require_once "server_functions.php"; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 <body>
 <br><br>
 <br><br>
-<? if(extension_loaded('sockets')){ echo "Status: ext-sockets ready to use"; }else{ echo "Расширение ext-sockets UNVALIBLE !"; } ?> 
+<? if(extension_loaded('sockets')){ echo "Status ext-sockets: ready to use"; }else{ echo "Status ext-sockets: UNVALIBLE !"; } ?> 
 <br><br>
 Server address: <span id="addr"> <? echo $address = $_SERVER['SERVER_ADDR']; ?> </span>
 <br><br>
@@ -21,18 +23,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
     $( () => {
       $('#startbtn').click( () => {
 	$('#logs').append($("<p>socket_create ...</p>"));
-        $.ajax({
-	        type: "POST",
-		      url: "server_actions.php",
-		      data: {
-		      	action: 'create_sock',
-		      	addr: '<? echo $address ?>',
-		      	port: '<? echo $port ?>' ,
-		      },
-		      success: function(data){
-            $('#logs').append($("<p>" + data + "</p>"));
-          }
-	});
+        $('#logs').append($("<p>" + <? echo create($address, $port) ?> + "</p>"));
       });
     });
   </script>
