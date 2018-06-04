@@ -30,6 +30,7 @@ function connect($socket){
   echo "Send to client \"".$msg."\"... ";
   socket_write($accept, $msg);
   echo "Success";
+  }
 }
   
 ?>
