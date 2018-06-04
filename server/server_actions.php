@@ -7,6 +7,7 @@ switch ($_POST['action']){
     if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
       echo "Error";
     } else {
+      socket_close($socket);
       echo "OK";
     }
   break;
@@ -15,6 +16,7 @@ switch ($_POST['action']){
       echo "Error";
     } else {
       echo bind($socket, $_POST['address'], $_POST['port']);
+      socket_close($socket);
     }
   break;
   case 'listen':
@@ -23,6 +25,7 @@ switch ($_POST['action']){
     } else {
       bind($socket, $_POST['address'], $_POST['port']);
       echo listen($socket);
+      socket_close($socket);
     }
   break;
   case 'connect':
@@ -32,6 +35,7 @@ switch ($_POST['action']){
       bind($socket, $_POST['address'], $_POST['port']);
       listen($socket);
       echo connect($socket);
+      socket_close($socket);
     }
   break; 
 };
