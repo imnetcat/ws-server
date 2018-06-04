@@ -23,9 +23,19 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp');
     $( () => {
       $('#startbtn').click( () => {
 	$('#logs').append($("<p>socket_create ...</p>"));
-        $('#logs').append($("<p>" + "<? echo create($address, $port) ?>" + "</p>"));
+        $('#logs').append($("<p>" + <?
+	  if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+            echo "Error: " . socket_strerror(socket_last_error());
+          }else{
+            echo "Success";
+          } 
+	?> + "</p>"));
         $('#logs').append($("<p>socket_bind...</p>"));
         $('#logs').append($("<p>" + "<? echo bind($socket, $address, $port) ?>" + "</p>"));
+	$('#logs').append($("<p>Listening socket...</p>"));
+        $('#logs').append($("<p>" + "<? echo listing($socket) ?>" + "</p>"));
+	$('#logs').append($("<p>Waiting...</p>"));
+        $('#logs').append($("<p>" + "<? echo connect($socket) ?>" + "</p>"));
       });
     });
   </script>
