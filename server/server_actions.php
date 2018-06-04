@@ -4,10 +4,9 @@ require_once "server_functions.php";
 
 switch ($_POST['action']){
   case 'create':
-    $socket = create()
-    if($socket == "Error"){
-      echo "Error: ext-sockets is unvalible";
-    }else{
+    if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+      echo "Error: " . socket_strerror(socket_last_error());
+    } else {
       echo "Success";
     }
   break;
