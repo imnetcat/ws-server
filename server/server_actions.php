@@ -8,16 +8,17 @@ switch ($_POST['action']){
       echo "Error: " . socket_strerror(socket_last_error());
     } else {
       echo "Success";
+      $_SERVER['socket'] = $socket;
     }
   break;
   case 'bind':
-    echo bind($socket, $_POST['address'], $_POST['port']);
+    echo bind($_SERVER['socket'], $_POST['address'], $_POST['port']);
   break;
   case 'listen':
-    echo listen($socket);
+    echo listen($_SERVER['socket']);
   break;
   case 'connect':
-    echo connect($socket);
+    echo connect($_SERVER['socket']);
   break; 
 };
 
