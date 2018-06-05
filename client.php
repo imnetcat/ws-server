@@ -4,11 +4,52 @@
   <meta charset="UTF-8" />
   <title>Siple Web-Socket Client</title>
   <script async>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('to_server').addEventListener('click', () => {
-        document.location = '/server/server.php';
+    $( () => {
+      $('#startbtn').click( () => {
+	      $('#logs').append($("<p>socket_create ...</p>"));
+	      $.ajax({
+          type: "POST",
+	        url: "client_actions.php",
+	        data: {
+	          action: 'create'
+	        },
+	        success: function(data){
+            $('#logs').append($("<p>" + data + "</p>"));
+            $('#logs').append($("<p>socket_bind...</p>"));
+	          if(data != "OK"){
+	          }else{
+              $.ajax({
+              type: "POST",
+	            url: "server_actions.php",
+	            data: {
+	              action: 'bind',
+	            	address: '<? echo $address ?>',
+	            	port: <? echo $port ?>
+              },
+	            success: function(data){
+                $('#logs').append($("<p>" + data + "</p>"));
+	              $('#logs').append($("<p>Listening socket...</p>"));
+	              if(data != "OK"){
+	              }else{
+	              $.ajax({
+                  type: "POST",
+	                url: "server_actions.php",
+	                data: {
+	                  action: 'listen',
+                  },
+	                success: function(data){
+	                  $('#logs').append($("<p>Connected!</p>"));
+                  }
+                });
+                }
+              }
+              });
+              });
+            }
+          }
+        });
       });
-    });
+    });          
   </script>
 </head>
 <body>
@@ -25,12 +66,12 @@ Message:
 <input id="sock-send-butt" type="button" value="send">
 <br />
 <br />
-<input id="sock-recon-butt" type="button" value="reconnect"><input id="sock-disc-butt" type="button" value="disconnect">
+<input id="startbtn" type="button" value="startbtn"><input id="sock-disc-butt" type="button" value="disconnect">
 <br />
 <br />
 
 Полученные сообщения от веб-сокета: 
-<div id="sock-info" style="border: 1px solid"> <? echo $_SERVER['SERVER_ADDR'] ?> </div>
+<div id="logs" style="border: 1px solid"> <? echo $_SERVER['SERVER_ADDR'] ?> </div>
 
 </body>
 </html>
