@@ -10,7 +10,6 @@
       });
     });
   </script>
-  <script src="socket.js" type="text/javascript"></script>
 </head>
 <body>
 <br>
