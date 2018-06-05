@@ -18,7 +18,7 @@ function bind($socket, $address, $port){
   socket_close($socket);
 }
 
-function connection($socket, $address, $port){
+function connect($socket, $address, $port){
   if(!socket_connect($socket, $address, $port)){
     return "Error: " . socket_strerror(socket_last_error());
   }else{
