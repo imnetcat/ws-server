@@ -17,48 +17,54 @@ Port: <? echo $port = getservbyname('socks', 'tcp'); ?>
 Message:
 <input id="sock-msg" type="text">
 <script async>
-    $( () => {
-      $('#startbtn').click( () => {
-	$('#logs').append($("<p>socket_create ...</p>"));
-	$.ajax({
-          type: "POST",
-	  url: "client_actions.php",
-	  data: {
-	    action: 'create'
-	  },
-	  success: function(data){
-            $('#logs').append($("<p>" + data + "</p>"));
-            $('#logs').append($("<p>socket_bind...</p>"));
-	    if(data != "OK"){
-	    }else{
-              $.ajax({
-              type: "POST",
-	      url: "server_actions.php",
-	      data: {
-	        action: 'bind',
-	        address: '<? echo $our_address ?>',
-	        port: '<? echo $port ?>'
-              },
-	      success: function(data){
-                $('#logs').append($("<p>" + data + "</p>"));
-	        $('#logs').append($("<p>Listening socket...</p>"));
-	        if(data != "OK"){
-	        }else{
-	          $.ajax({
-                    type: "POST",
-	            url: "server_actions.php",
-	            data: {
-	              action: 'connect',
-		      address: '<? echo $server_address ?>',
-	              port: <? echo $port ?>
-		    },
-	            success: function(data){
-	              $('#logs').append($("<p>Connected!</p>"));
-		    }
-		    });
-		  }
-			 }
-  </script>
+$( () => {
+  $('#startbtn').click( () => {
+    $('#logs').append($("<p>socket_create ...</p>"));
+    $.ajax({
+      type: "POST",
+      url: "client_actions.php",
+      data: {
+        action: 'create'
+      },
+      success: function(data){
+        $('#logs').append($("<p>" + data + "</p>"));
+        $('#logs').append($("<p>socket_bind...</p>"));
+        if(data != "OK"){
+        }else{
+          $.ajax({
+            type: "POST",
+            url: "server_actions.php",
+            data: {
+              action: 'bind',
+              address: '<? echo $our_address ?>',
+              port: <? echo $port ?>
+            },
+            success: function(data){
+              $('#logs').append($("<p>" + data + "</p>"));
+              $('#logs').append($("<p>Listening socket...</p>"));
+              if(data != "OK"){
+              }else{
+                $.ajax({
+                  type: "POST",
+                  url: "server_actions.php",
+                  data: {
+                    action: 'connect',
+                    address: '<? echo $server_address ?>',
+                    port: <? echo $port ?>
+                  },
+                  success: function(data){
+                    $('#logs').append($("<p>Connected!</p>"));
+                  }
+                });
+              }
+            }
+          });
+        }
+      }
+    });
+  });
+});
+ </script>
 <input id="sock-send-butt" type="button" value="send">
 <br />
 <br />
