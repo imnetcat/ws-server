@@ -11,9 +11,10 @@
 <br>
 <button id="to_server">Go to server</button>
 <br>
-Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?>
-Our address: <? echo $our_address = $_SERVER['REMOTE_ADDR']; ?>
-Port: <? echo $port = getservbyname('socks', 'tcp'); ?>
+Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?> <br>
+Our proxy: <? echo $our_proxy = $_SERVER['REMOTE_ADDR']; ?> <br>
+Our address: <? echo $our_address = $_SERVER['HTTP_X_FORWARDED_FOR']; ?> <br>
+Port: <? echo $port = getservbyname('socks', 'tcp'); ?> <br>
 Message:
 <input id="sock-msg" type="text">
 <script async>
