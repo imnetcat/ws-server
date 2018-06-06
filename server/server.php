@@ -12,7 +12,7 @@
 <br><br>
 Server address: <span id="addr"> <? echo $address =  $_SERVER['SERVER_ADDR']; ?> </span>
 <br><br>
-Server port: <span id="port"><? echo $port = getservbyname('socket', 'tcp'); ?></span>
+Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp'); ?></span>
 <br><br>
 <br><br>
 <button id="startbtn">Start server</button>
