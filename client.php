@@ -18,11 +18,11 @@
 <br>
 <button id="to_server">Go to server</button>
 <br>
-Server address: <? echo $address = $_SERVER['SERVER_ADDR']; ?> <br>
-Our proxy: <? echo $our_proxy = gethostbyname('logs.net-cat-server.online'); ?> <br>
+Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?> <br>//gethostbyname('logs.net-cat-server.online')
+Our proxy: <? echo $our_proxy = $_SERVER['REMOTE_ADDR']; ?> <br> 
   
 Our address: <? echo @$our_address = $_SERVER['HTTP_X_FORWARDED_FOR']; ?><br>
-Port: <? echo $port = getservbyname('www', 'tcp'); ?> <br>
+Port: <? echo $port = getservbyname('socks', 'tcp'); ?> <br>
 Message:
 <input id="message" type="text">
 <script async>
@@ -90,6 +90,7 @@ $( () => {
 Полученные сообщения от веб-сокета: 
 <div id="logs" style="border: 1px solid">
   <?
+  $address = gethostbyname('logs.net-cat-server.online');
 $service_port = getservbyname('socks', 'tcp');
 /* Создаём сокет TCP/IP. */
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
