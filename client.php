@@ -2,43 +2,58 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Siple Web-Socket Client</title>
-  <script async>
+  <title>Client</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<button id="to_server">Go to server</button>
+<br>
+Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?>
+Our address: <? echo $our_address = gethostbyname($_SERVER['SERVER_HOST']); ?>
+Port: <? echo $port = getservbyname('socks', 'tcp'); ?>
+Message:
+<input id="sock-msg" type="text">
+<script async>
     $( () => {
       $('#startbtn').click( () => {
-	      $('#logs').append($("<p>socket_create ...</p>"));
-	      $.ajax({
+	$('#logs').append($("<p>socket_create ...</p>"));
+	$.ajax({
           type: "POST",
-	        url: "client_actions.php",
-	        data: {
-	          action: 'create'
-	        },
-	        success: function(data){
+	  url: "client_actions.php",
+	  data: {
+	    action: 'create'
+	  },
+	  success: function(data){
             $('#logs').append($("<p>" + data + "</p>"));
             $('#logs').append($("<p>socket_bind...</p>"));
-	          if(data != "OK"){
-	          }else{
+	    if(data != "OK"){
+	    }else{
               $.ajax({
               type: "POST",
+	      url: "server_actions.php",
+	      data: {
+	        action: 'bind',
+	        address: '<? echo $our_address ?>',
+	        port: <? echo $port ?>
+              },
+	      success: function(data){
+                $('#logs').append($("<p>" + data + "</p>"));
+	        $('#logs').append($("<p>Listening socket...</p>"));
+	        if(data != "OK"){
+	        }else{
+	          $.ajax({
+                    type: "POST",
 	            url: "server_actions.php",
 	            data: {
-	              action: 'bind',
-	            	address: '<? echo $address ?>',
-	            	port: <? echo $port ?>
-              },
+	              action: 'connect',
+		      address: '<? echo $server_address ?>',
+	              port: <? echo $port ?>
+		    },
 	            success: function(data){
-                $('#logs').append($("<p>" + data + "</p>"));
-	              $('#logs').append($("<p>Listening socket...</p>"));
-	              if(data != "OK"){
-	              }else{
-	              $.ajax({
-                  type: "POST",
-	                url: "server_actions.php",
-	                data: {
-	                  action: 'listen',
-                  },
-	                success: function(data){
-	                  $('#logs').append($("<p>Connected!</p>"));
+	              $('#logs').append($("<p>Connected!</p>"));
                   }
                 });
                 }
@@ -51,18 +66,6 @@
       });
     });          
   </script>
-</head>
-<body>
-<br>
-<br>
-<br>
-<button id="to_server">Go to server</button>
-<br>
-Server address:
-<input id="sock-addr" type="text" value="wss://echo.websocket.org"><br />
-Message:
-<input id="sock-msg" type="text">
-
 <input id="sock-send-butt" type="button" value="send">
 <br />
 <br />
