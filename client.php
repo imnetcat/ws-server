@@ -7,7 +7,7 @@
   <script async>
     $( () => {
       $('#to_server').click( () => {
-         document.location = '/server/server.php';
+         document.location += '/server/server.php';
       });
     });
   </script>
