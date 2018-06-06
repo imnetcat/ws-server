@@ -6,7 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script async>
     $( () => {
-      $('#startbtn').click( () => {
+      $('#to_server').click( () => {
          document.location = '/server/server.php';
       });
     });
