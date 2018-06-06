@@ -1,4 +1,6 @@
 <?
+switch ($_POST['action']){
+  case 'create':
 error_reporting(E_ALL);
 
 echo "<h2>Соединение TCP/IP</h2>\n";
@@ -43,3 +45,5 @@ echo "Закрываем сокет...";
 socket_close($socket);
 echo "OK.\n\n";
 ?>
+break;
+}
