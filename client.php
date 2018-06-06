@@ -20,7 +20,7 @@ Message:
 <script async>
 $( () => {
   $('#startbtn').click( () => {
-    $('#logs').append($("<p>socket_create ...</p>"));
+    $('#logs').append($("<span>socket_create ...</span><br>"));
     $.ajax({
       type: "POST",
       url: "client_actions.php",
@@ -28,8 +28,8 @@ $( () => {
         action: 'create'
       },
       success: function(data){
-        $('#logs').append($("<p>" + data + "</p>"));
-        $('#logs').append($("<p>socket_bind...</p>"));
+        $('#logs').append($("<span>" + data + "</span><br>"));
+        $('#logs').append($("<span>socket_bind...</span><br>"));
         if(data != "OK"){
         }else{
           $.ajax({
@@ -41,8 +41,8 @@ $( () => {
               port: <? echo $port ?>
             },
             success: function(data){
-              $('#logs').append($("<p>" + data + "</p>"));
-              $('#logs').append($("<p>Listening socket...</p>"));
+              $('#logs').append($("<span>" + data + "</span><br>"));
+              $('#logs').append($("<span>Listening socket...</span><br>"));
               if(data != "OK"){
               }else{
                 $.ajax({
@@ -55,8 +55,9 @@ $( () => {
                   },
                   success: function(data){
                     if(data != "OK"){
+                      $('#logs').append($("<span>" + data + "</span><br>"));
                     }else{
-                      $('#logs').append($("<p>Connected!</p>"));
+                      $('#logs').append($("<span>Connected!</span><br>"));
                     }
                   }
                 });
