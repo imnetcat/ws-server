@@ -30,8 +30,52 @@ $( () => {
   $('#startbtn').click( () => {
     $('#logs').append($("<span>Creating ...</span><br>"));
     $.ajax({
-      type: "GET",
-      url: "client_actions.php"    
+      type: "POST",
+      url: "client_actions.php",
+      data: {
+        action: 'create'
+      },
+      success: function(data){
+        if(data != "OK"){
+          $('#logs').append($("<span>" + data + "</span><br>"));
+        }else{
+          $('#logs').append($("<span>" + data + "</span><br>"));
+          $('#logs').append($("<span>Bindind...</span><br>"));
+          $.ajax({
+            type: "POST",
+            url: "client_actions.php",
+            data: {
+              action: 'bind',
+              address: '127.0.0.1',
+              port: <? echo $port ?>
+            },
+            success: function(data){
+              if(data != "OK"){
+                $('#logs').append($("<span>" + data + "</span><br>"));
+              }else{
+                $('#logs').append($("<span>" + data + "</span><br>"));
+                $('#logs').append($("<span>Connecting...</span><br>"));
+                $.ajax({
+                  type: "POST",
+                  url: "client_actions.php",
+                  data: {
+                    action: 'connect',
+                    address: '<? echo $server_address ?>',
+                    port: <? echo $port ?>
+                  },
+                  success: function(data){
+                    if(data != "OK"){
+                      $('#logs').append($("<span>" + data + "</span><br>"));
+                    }else{
+                      $('#logs').append($("<span>Connected!</span><br>"));
+                    }
+                  }
+                });
+              }
+            }
+          });
+        }
+      }
     });
   });
 });
