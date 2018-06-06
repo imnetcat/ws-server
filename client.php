@@ -7,7 +7,7 @@
   <script async>
     $( () => {
       $('#startbtn').click( () => {
-         document.location += '/server/server.php';
+         document.location = '/server/server.php';
       });
     });
   </script>
