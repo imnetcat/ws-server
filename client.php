@@ -47,7 +47,7 @@ $( () => {
               }else{
                 $.ajax({
                   type: "POST",
-                  url: "server_actions.php",
+                  url: "client_actions.php",
                   data: {
                     action: 'connect',
                     address: '<? echo $server_address ?>',
