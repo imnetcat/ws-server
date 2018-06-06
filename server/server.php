@@ -10,7 +10,7 @@
 <br><br>
 <? if(extension_loaded('sockets')){ echo "Status ext-sockets: ready to use"; }else{ echo "Status ext-sockets: UNVALIBLE !"; } ?> 
 <br><br>
-Server address: <span id="addr"> <? echo $address =  $_SERVER['SERVER_ADDR']; ?> </span>
+Server address: <span id="addr"> <? echo $address =  gethostbyname('logs.net-cat-server.online'); ?> </span>
 <br><br>
 Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp'); ?></span>
 <br><br>
