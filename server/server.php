@@ -12,8 +12,7 @@
 <br><br>
 Server address: <span id="addr"> <? echo $address = gethostbyname('logs.net-cat-server.online'); ?> </span>
 <br><br>
-Server port: <span id="port"><? echo $port = getservbyname('www', 'tcp');
-  ?></span>
+Server port: <span id="port"><? echo $port = 10001 ?></span>
 <br><br>
 <br><br>
 <button id="startbtn">Start server</button>
