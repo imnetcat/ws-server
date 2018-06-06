@@ -22,7 +22,7 @@ Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?> <br>
 Our proxy: <? echo $our_proxy = gethostbyname('logs.net-cat-server.online'); ?> <br>
   
 Our address: <? echo @$our_address = $_SERVER['HTTP_X_FORWARDED_FOR']; ?><br>
-Port: <? echo $port = getservbyname('sock', 'tcp'); ?> <br>
+Port: <? echo $port = getservbyname('socks', 'tcp'); ?> <br>
 Message:
 <input id="message" type="text">
 <script async>
