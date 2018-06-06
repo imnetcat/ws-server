@@ -54,7 +54,10 @@ $( () => {
                     port: <? echo $port ?>
                   },
                   success: function(data){
-                    $('#logs').append($("<p>Connected!</p>"));
+                    if(data != "OK"){
+                    }else{
+                      $('#logs').append($("<p>Connected!</p>"));
+                    }
                   }
                 });
               }
