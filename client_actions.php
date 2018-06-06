@@ -1,5 +1,5 @@
 <?
-require_once "server_functions.php";
+require_once "client_functions.php";
 switch ($_POST['action']){
   case 'create':
     if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
