@@ -11,39 +11,38 @@ function create(){
 
 function bind($socket, $address, $port){
   if(!socket_bind($socket, $address, $port)){
+    socket_close($socket);
     return "Error: " . socket_strerror(socket_last_error());
   }else{
+    socket_close($socket);
     return "OK";
   }
-  socket_close($socket);
 }
 
 function listen($socket){
   socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);//разрешаем использовать один порт для нескольких соединений
   if(!socket_listen($socket, 5)){
+    socket_close($socket);
     return "Error: " . socket_strerror(socket_last_error());
   }else{
+    socket_close($socket);
     return "OK";
   }
-  socket_close($socket);
 }
   
 function connect($socket){
   while(true){ //Бесконечный цикл ожидания подключений
   $accept = @socket_accept($socket); //Зависаем пока не получим ответа
   if($accept === false){
-    echo "Error: " . socket_strerror(socket_last_error());
+    // echo "Error: " . socket_strerror(socket_last_error());
     usleep(100);
   } else {
-    echo "Connect accept";
-    echo "Client \"".$accept."\" has connected";
+    $msg = "Hello, Client!";
+    socket_write($accept, $msg);
+    socket_close($socket);
+    return "Client \"".$accept."\" has connected" . "<br>" . "Send to client \"".$msg."\"... " . "<br>" . "OK";
   }
-  $msg = "Hello, Client!";
-  echo "Send to client \"".$msg."\"... ";
-  socket_write($accept, $msg);
-  echo "OK";
   }
-  socket_close($socket);
 }
   
 ?>
