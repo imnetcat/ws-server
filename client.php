@@ -16,11 +16,11 @@ Our proxy: <? echo $our_proxy = $_SERVER['REMOTE_ADDR']; ?> <br>
 Our address: <? echo $our_address = @$_SERVER['HTTP_X_FORWARDED_FOR']; ?><br>
 Port: <? echo $port = getservbyname('socks', 'tcp'); ?> <br>
 Message:
-<input id="sock-msg" type="text">
+<input id="message" type="text">
 <script async>
 $( () => {
   $('#startbtn').click( () => {
-    $('#logs').append($("<span>socket_create ...</span><br>"));
+    $('#logs').append($("<span>Creating ...</span><br>"));
     $.ajax({
       type: "POST",
       url: "client_actions.php",
@@ -28,10 +28,10 @@ $( () => {
         action: 'create'
       },
       success: function(data){
-        $('#logs').append($("<span>" + data + "</span><br>"));
-        $('#logs').append($("<span>socket_bind...</span><br>"));
         if(data != "OK"){
+          $('#logs').append($("<span>" + data + "</span><br>"));
         }else{
+          $('#logs').append($("<span>Bindind...</span><br>"));
           $.ajax({
             type: "POST",
             url: "client_actions.php",
@@ -41,10 +41,10 @@ $( () => {
               port: <? echo $port ?>
             },
             success: function(data){
-              $('#logs').append($("<span>" + data + "</span><br>"));
-              $('#logs').append($("<span>Listening socket...</span><br>"));
               if(data != "OK"){
+                $('#logs').append($("<span>" + data + "</span><br>"));
               }else{
+                $('#logs').append($("<span>Connecting...</span><br>"));
                 $.ajax({
                   type: "POST",
                   url: "client_actions.php",
@@ -78,7 +78,7 @@ $( () => {
 <br />
 
 Полученные сообщения от веб-сокета: 
-<div id="logs" style="border: 1px solid"> <? echo $_SERVER['SERVER_ADDR'] ?> </div>
+<div id="logs" style="border: 1px solid"></div>
 
 </body>
 </html>
