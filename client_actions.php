@@ -1,7 +1,4 @@
 <?
-require_once "client_functions.php";
-switch ($_POST['action']){
-  case 'connect':
 error_reporting(E_ALL);
 
 echo "<h2>Соединение TCP/IP</h2>\n";
@@ -45,6 +42,4 @@ while ($out = socket_read($socket, 2048)) {
 echo "Закрываем сокет...";
 socket_close($socket);
 echo "OK.\n\n";
-  break;
-};
 ?>
