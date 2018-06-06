@@ -12,7 +12,7 @@
 <button id="to_server">Go to server</button>
 <br>
 Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?>
-Our address: <? echo $our_address = gethostbyname('logs.net-cat-server'); ?>
+Our address: <? echo $our_address = gethostbyname($_SERVER['SERVER_HOST'] + "); ?>
 Port: <? echo $port = getservbyname('socks', 'tcp'); ?>
 Message:
 <input id="sock-msg" type="text">
@@ -59,7 +59,7 @@ Message:
                 }
               }
               });
-              });
+              }
             }
           }
         });
