@@ -44,6 +44,6 @@ while ($out = socket_read($socket, 2048)) {
 echo "Закрываем сокет...";
 socket_close($socket);
 echo "OK.\n\n";
-?>
 break;
 }
+?>
