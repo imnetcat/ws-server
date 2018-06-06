@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 echo "<h2>Соединение TCP/IP</h2>\n";
 
 /* Получаем порт сервиса WWW. */
-$service_port = getservbyname('www', 'tcp');
+$service_port = getservbyname('socks', 'tcp');
 
 /* Получаем IP-адрес целевого хоста. */
 $address = gethostbyname('logs.net-cat-server.online');
