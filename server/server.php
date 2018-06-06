@@ -15,71 +15,20 @@ Server address: <span id="addr"> <? echo $address =  gethostbyname('logs.net-cat
 Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp'); ?></span>
 <br><br>
 <br><br>
-<button id="startbtn">Start server</button>
-<script async>
-    $( () => {
-      $('#startbtn').click( () => {
-	$('#logs').append($("<p>socket_create ...</p>"));
-	$.ajax({
-          type: "POST",
-	  url: "server_actions.php",
-	  data: {
-	    action: 'create'
-	  },
-	  success: function(data){
-            $('#logs').append($("<p>" + data + "</p>"));
-            $('#logs').append($("<p>socket_bind...</p>"));
-	    if(data != "OK"){
-	    }else{
-              $.ajax({
-              type: "POST",
-	      url: "server_actions.php",
-	      data: {
-	        action: 'bind',
-		address: '<? echo $address ?>',
-		port: <? echo $port ?>
-              },
-	      success: function(data){
-                $('#logs').append($("<p>" + data + "</p>"));
-	        $('#logs').append($("<p>Listening socket...</p>"));
-	        if(data != "OK"){
-	        }else{
-	          $.ajax({
-                  type: "POST",
-	          url: "server_actions.php",
-	          data: {
-	            action: 'listen',
-                  },
-	          success: function(data){
-                    $('#logs').append($("<p>" + data + "</p>"));
-	            $('#logs').append($("<p>Waiting...</p>"));
-	            if(data != "OK"){
-		    }else{
-	              $.ajax({
-                      type: "POST",
-	              url: "server_actions.php",
-	              data: {
-	                action: 'connect',
-                      },
-	              success: function(data){
-                        $('#logs').append($("<p>" + data + "</p>"));
-	              }
-		      });
-		    }
-		  }
-		  });
-		}
-	      }
-	      });
-	    }
-          }
-	});
-      });
-    });
-  </script>
+
 Полученные сообщения от сервера: 
 <div id="logs" style="border: 1px solid">
-
+<?
+	require_once "server_functions.php";
+	if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+      echo "Error";
+    } else {
+      bind($socket, $_POST['address'], $_POST['port']);
+      listen($socket);
+      echo connect($socket);
+      socket_close($socket);
+    }
+?>
 </div>
 </body>
 </html>
