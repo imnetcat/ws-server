@@ -23,7 +23,7 @@ Server port: <span id="port"><? echo $port = getservbyname('socks', 'tcp'); ?></
 	if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
       echo "Error";
     } else {
-      bind($socket, $_POST['address'], $_POST['port']);
+      bind($socket, $address, $port);
       listen($socket);
       echo connect($socket);
       socket_close($socket);
