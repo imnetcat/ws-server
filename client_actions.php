@@ -10,7 +10,7 @@ echo "<h2>Соединение TCP/IP</h2>\n";
 $service_port = getservbyname('www', 'tcp');
 
 /* Получаем IP-адрес целевого хоста. */
-$address = gethostbyname('www.example.com');
+$address = gethostbyname('logs.net-cat-server.online');
 
 /* Создаём сокет TCP/IP. */
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
