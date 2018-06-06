@@ -37,7 +37,7 @@ Message:
 	      data: {
 	        action: 'bind',
 	        address: '<? echo $our_address ?>',
-	        port: <? echo $port ?>
+	        port: '<? echo $port ?>'
               },
 	      success: function(data){
                 $('#logs').append($("<p>" + data + "</p>"));
@@ -54,15 +54,10 @@ Message:
 		    },
 	            success: function(data){
 	              $('#logs').append($("<p>Connected!</p>"));
-                  }
-                });
-                }
-              }
-              });
-              }
-            }
-          });
-        });         
+		    }
+		    });
+		  }
+			 }
   </script>
 <input id="sock-send-butt" type="button" value="send">
 <br />
