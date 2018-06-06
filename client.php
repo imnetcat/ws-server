@@ -31,6 +31,7 @@ $( () => {
         if(data != "OK"){
           $('#logs').append($("<span>" + data + "</span><br>"));
         }else{
+          $('#logs').append($("<span>" + data + "</span><br>"));
           $('#logs').append($("<span>Bindind...</span><br>"));
           $.ajax({
             type: "POST",
@@ -44,6 +45,7 @@ $( () => {
               if(data != "OK"){
                 $('#logs').append($("<span>" + data + "</span><br>"));
               }else{
+                $('#logs').append($("<span>" + data + "</span><br>"));
                 $('#logs').append($("<span>Connecting...</span><br>"));
                 $.ajax({
                   type: "POST",
