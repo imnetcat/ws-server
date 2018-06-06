@@ -12,7 +12,7 @@
 <button id="to_server">Go to server</button>
 <br>
 Server address: <? echo $server_address = $_SERVER['SERVER_ADDR']; ?>
-Our address: <? echo $our_address = gethostbyname($_SERVER['SERVER_NAME']); ?>
+Our address: <? echo $our_address = $_SERVER['REMOTE_ADDR']; ?>
 Port: <? echo $port = getservbyname('socks', 'tcp'); ?>
 Message:
 <input id="sock-msg" type="text">
