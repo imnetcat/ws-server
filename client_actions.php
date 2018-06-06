@@ -22,7 +22,7 @@ switch ($_POST['action']){
       echo "Error";
     } else {
       bind($socket, $_POST['address'], $_POST['port']);
-      echo connect($socket);
+      echo connect($socket, $_POST['address'], $_POST['port']);
       socket_close($socket);
     }
   break;
