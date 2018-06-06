@@ -62,9 +62,7 @@ Message:
               }
             }
           });
-        });
-      });
-    });          
+        });         
   </script>
 <input id="sock-send-butt" type="button" value="send">
 <br />
