@@ -37,7 +37,7 @@ $( () => {
             url: "client_actions.php",
             data: {
               action: 'bind',
-              address: '<? echo $our_address ?>',
+              address: '<? echo $our_proxy ?>',
               port: <? echo $port ?>
             },
             success: function(data){
