@@ -24,5 +24,5 @@ function connect($socket, $address, $port){
   }else{
     return "OK";
   }
-
+}
 ?>
