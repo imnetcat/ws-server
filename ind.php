@@ -15,4 +15,5 @@ if (!$fp) {
       }
    fclose($fp);
    if (!empty($page)) echo '<pre>'.$page.'</pre>';
+}
 ?>
