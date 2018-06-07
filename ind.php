@@ -1,5 +1,5 @@
 <?php
-$fp = fsockopen('logs.net-cat-server.online', 80, $errno, $errstr, 30);
+$fp = fsockopen('tcp://logs.net-cat-server.online:80', $errno, $errstr, 30);
 if (!$fp) {
       echo "$errstr ($errno)
 ";
