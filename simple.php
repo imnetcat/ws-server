@@ -1,6 +1,6 @@
 <?php
-$address = '0.0.0.0';
-$port = 12345;
+$address = $_SERVER['SERVER_ADDR'];
+$port = getservbyname('socks', 'tcp');
 // Create WebSocket.
 $server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 socket_set_option($server, SOL_SOCKET, SO_REUSEADDR, 1);
