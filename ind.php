@@ -1,5 +1,5 @@
 <?php
-$fp = fsockopen(gethostbyname('logs.net-cat-server.online'), 80, $errno, $errstr, 30);
+$fp = fsockopen("net-cat-server.herokuapp.com", 80, $errno, $errstr, 30);
 if (!$fp) {
       echo "$errstr ($errno)
 ";
