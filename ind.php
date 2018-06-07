@@ -8,7 +8,6 @@ if (!$fp) {
       $query .= "Upgrade: WebSocket ";
       $query .= "Connection: Upgrade ";
       $query .= "Host: logs.net-cat-server.online ";
-      $query .= "Origin: http://logs.net-cat-server.online ";
       fwrite($fp, $query);
       $page = '';
       while (!feof($fp)) {
