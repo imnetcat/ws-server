@@ -1,10 +1,5 @@
 <?php session_start();?>
 
-<?php
-if (! $_SESSION['logged_in']) {
-	header("location:login.php");
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
