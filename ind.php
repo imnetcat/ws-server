@@ -5,9 +5,10 @@ if (!$fp) {
 ";
 } else {
       $query = "GET / HTTP/1.1 ";
-      $query .= "Upgrade: WebSocket";
-      $query .= "Connection: Upgrade";
+      $query .= "Upgrade: WebSocket ";
+      $query .= "Connection: Upgrade ";
       $query .= "Host: logs.net-cat-server.online ";
+      $query .= "Origin: http://site.com ";
       fwrite($fp, $query);
       $page = '';
       while (!feof($fp)) {
