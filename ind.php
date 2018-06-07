@@ -1,5 +1,5 @@
 <?php
-$fp = fsockopen("master-web.com.ua", 80, $errno, $errstr, 30);
+$fp = fsockopen("logs.net-cat-server.online", 80, $errno, $errstr, 30);
 if (!$fp) {
       echo "$errstr ($errno)
 ";
@@ -7,7 +7,7 @@ if (!$fp) {
       $query = "GET / HTTP/1.1 ";
       $query .= "Upgrade: WebSocket";
       $query .= "Connection: Upgrade";
-      $query .= "Host: net-cat-server.online ";
+      $query .= "Host: logs.net-cat-server.online ";
       fwrite($fp, $query);
       $page = '';
       while (!feof($fp)) {
