@@ -1,6 +1,6 @@
 <?php
 
-    $socket = stream_socket_server($_SERVER['SERVER_ADDR'] + ":1080", $errorNumber, $errorDescription);
+    $socket = stream_socket_server(gethostbyname('logs.net-cat-server.online') + ":1080", $errorNumber, $errorDescription);
 
     if (!$socket) {
         die("$errorDescription ($errorNumber)\n");
