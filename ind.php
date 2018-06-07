@@ -1,6 +1,5 @@
 <?php
-echo  $_SERVER['SERVER_ADDR'];
-$fp = fsockopen($_SERVER['SERVER_ADDR'], 80, $errno, $errstr, 30);
+$fp = fsockopen(gethostbyname('logs.net-cat-server.online'), 80, $errno, $errstr, 30);
 if (!$fp) {
       echo "$errstr ($errno)
 ";
