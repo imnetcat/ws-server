@@ -3,7 +3,7 @@
 <body>
     <div id="root"></div>
     <script>
-        var host = 'ws://127.0.0.1:12345/websockets.php';
+        var host = 'ws://'+$_SERVER['SERVER_ADDR']+':'+getservbyname('socks', 'tcp')+'/simple.php';
         var socket = new WebSocket(host);
         socket.onmessage = function(e) {
             document.getElementById('root').innerHTML = e.data;
