@@ -1,3 +1,4 @@
+<?
 $address = $_SERVER['SERVER_ADDR'];
 $port = getservbyname('socks', 'tcp');
   if(!$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
@@ -40,3 +41,4 @@ $port = getservbyname('socks', 'tcp');
   echo "OK";
   }
   socket_close($socket);
+?>
