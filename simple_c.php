@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <div id="root"></div>
-    <script>
-        var host = 'ws://<? echo $_SERVER['SERVER_ADDR']?>:1080/simple.php';
-        var socket = new WebSocket(host);
-        socket.onmessage = function(e) {
-            document.getElementById('root').innerHTML = e.data;
-        };
-    </script>
-</body>
-</html>
+<?
+$request = "GET /chat HTTP/1.1";
+$request .= "Host: logs.net-cat-server.online/simple.php";
+$request .= "Upgrade: websocket";
+$request .= "Connection: Upgrade";
+$request .= "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==";
+$request .= "Sec-WebSocket-Protocol: chat, superchat";
+$request .= "Sec-WebSocket-Version: 13";
+header($request);
+?>
