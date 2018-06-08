@@ -6,7 +6,8 @@ $server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 socket_set_option($server, SOL_SOCKET, SO_REUSEADDR, 1);
 socket_bind($server, $address, $port);
 socket_listen($server);
-$client = socket_accept($server);
+while(true){
+$client = @socket_accept($server);
 // Send WebSocket handshake headers.
 $request = socket_read($client, 5000);
 preg_match('#Sec-WebSocket-Key: (.*)\r\n#', $request, $matches);
@@ -26,5 +27,6 @@ while (true) {
     $content = 'Now: ' . time();
     $response = chr(129) . chr(strlen($content)) . $content;
     socket_write($client, $response);
+}
 }
 ?>
