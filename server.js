@@ -18,7 +18,7 @@ wss.on('connection', (sock) => {
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
     console.log(sock);
-    console.log(sock.data);
+    console.log(JSON.parse(sock));
     if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
