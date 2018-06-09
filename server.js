@@ -13,21 +13,21 @@ const server = express()
 
 const wss = new SocketServer({ server });
 
-wss.on('connection', (event) => {
+wss.on('connection', (sock) => {
   var annonimusId = Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
-  ws.on('message', (event) => {
-    if(event.towho == "server"){
-      console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + event.who);
+  sock.on('message', (sock) => {
+    if(sock.towho == "server"){
+      console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
-      user = event.who;
+      user = sock.who;
     }else{
-      console.log( user + ' ---> ' + event.towho + ' \n\r ' + event.data );
+      console.log( user + ' ---> ' + sock.towho + ' \n\r ' + sock.data );
     }
   });
   
-  ws.on('close', (event) => {
-    console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+event.who + ' disconnected');
+  sock.on('close', (sock) => {
+    console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
 
