@@ -17,7 +17,10 @@ wss.on('connection', (sock) => {
   var annonimusId = Math.floor(Math.random() * (99999 - 10000) + 10000);
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
+    console.log(sock);
     var sock = JSON.parse(sock);
+    console.log(sock);
+    console.log(sock.towho);
     if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
