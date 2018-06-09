@@ -18,18 +18,17 @@ wss.on('connection', (sock) => {
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
     var sock = JSON.parse(sock);
-    console.log(sock);
     if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
-      var user = event.who;
+      var user = sock.who;
     }else{
-      console.log( user + ' ---> ' + event.towho + ' \n\r ' + sock.data );
+      console.log( user + ' ---> ' + sock.towho + ' \n\r ' + sock.data );
     }
   });
   
   sock.on('close', (sock) => {
-    event = JSON.parse(sock.data);
+    event = JSON.parse(sock);
     console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
