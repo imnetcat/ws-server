@@ -10,20 +10,22 @@
         $('#auth').remove();
         var HOST = location.origin.replace(/^http/, 'ws')
         var sock = new WebSocket(HOST);
-        var query = {
-        	who: nick,
-          towho: "server",
-        	data: "I am"
-        };
-        sock.send(JSON.stringify(query));
-        var msgbox = $('#msgbox');
-        sock.onmessage = function (event) {
-          msgbox.append($('<p>Server answer: ' + event.data));
-        };
-        $('body').append($('<h2>'+ nick + '</h2>'));
-        $('body').append($('<div id="msgbox"></div>'));
-        $('body').append($('<div tabindex="0" contenteditable="true" id="message" role="textbox" aria-multiline="true"></div>')); 
-        $('body').append($('<button id="sendbtn">Send</button>'));
+        sock.onconnect = () => {
+          var query = {
+          	who: nick,
+            towho: "server",
+          	data: "I am"
+          };
+          sock.send(JSON.stringify(query));
+          var msgbox = $('#msgbox');
+          sock.onmessage = function (event) {
+            msgbox.append($('<p>Server answer: ' + event.data));
+          };
+          $('body').append($('<h2>'+ nick + '</h2>'));
+          $('body').append($('<div id="msgbox"></div>'));
+          $('body').append($('<div tabindex="0" contenteditable="true" id="message" role="textbox" aria-multiline="true"></div>')); 
+          $('body').append($('<button id="sendbtn">Send</button>'));
+        }
       });
     });
   </script>
