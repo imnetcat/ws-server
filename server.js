@@ -14,14 +14,12 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
-  var annonimusId = '[C]-' + Math.floor(Math.random() * (99999 - 10000) + 10000);
+  var annonimusId = '[C]-' + (wss.clients.lenght + 1);
   console.log('[S] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
+    console.log(wss.clients.lenght);
     var sock = JSON.parse(sock);
     if(sock.towho == "server"){
-      console.log(annonimusId + ' ---> [S]  |:|  I am ' + sock.who);
-      annonimusId = null;
-      var user = '[C]-' + sock.who;
     }else{
       console.log( user + ' ---> ' + sock.towho + ' |:| ' + sock.data );
     }
