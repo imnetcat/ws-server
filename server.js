@@ -14,23 +14,23 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
-  sock = JSON.parse(sock);
+  event = JSON.parse(sock);
   var annonimusId = Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
-    sock = JSON.parse(sock);
-    if(sock.towho == "server"){
-      console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
+    event = JSON.parse(sock);
+    if(event.towho == "server"){
+      console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + event.who);
       annonimusId = null;
-      var user = sock.who;
+      var user = event.who;
     }else{
-      console.log( user + ' ---> ' + sock.towho + ' \n\r ' + sock.data );
+      console.log( user + ' ---> ' + event.towho + ' \n\r ' + event.data );
     }
   });
   
   sock.on('close', (sock) => {
-    sock = JSON.parse(sock);
-    console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+sock.who + ' disconnected');
+    event = JSON.parse(sock);
+    console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+event.who + ' disconnected');
   });
 });
 
