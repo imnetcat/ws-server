@@ -1,14 +1,35 @@
 <!DOCTYPE html>
+<head>
+  <title>Client</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script async>
+    $( () => {
+      $('#auth').click( () => {
+        var nick = $('#nick').val();
+        $('#nick').remove();
+        $('#auth').remove();
+        var HOST = location.origin.replace(/^http/, 'ws')
+        var sock = new WebSocket(HOST);
+        var query = {
+        	who: nick,
+          towho: "server",
+        	data: "I am"
+        };
+        sock.send(JSON.stringify(query));
+        var msgbox = $('#msgbox');
+        sock.onmessage = function (event) {
+          msgbox.append($('<p>Server answer: ' + event.data));
+        };
+        $('body').append($('<h2>'+ nick + '</h2>));
+        $('body').append($('<div id="msgbox"></div>'));
+        $('body').append($('<div tabindex="0" contenteditable="true" id="message" role="textbox" aria-multiline="true"></div>')); 
+        $('body').append($('<button id="sendbtn">Send</button>'));
+      });
+    });
+  </script>
+</head>
 <html>
   <body>
-    <p id='server-time'></p>
-    <script>
-      var HOST = location.origin.replace(/^http/, 'ws')
-      var ws = new WebSocket(HOST);
-      var el = document.getElementById('server-time');
-      ws.onmessage = function (event) {
-        el.innerHTML = 'Server ' + location.origin.replace(/^http/, 'ws') +' time: ' + event.data;
-      };
-    </script>
+    <input type="text" id="nick"> <button id="auth">Login</button>
   </body>
 </html>
