@@ -22,7 +22,8 @@ wss.on('connection', (event) => {
       annonimusId = null;
       user = event.who;
     }else{
-      console.log( user + ' ---> ' + event.towho + ' \n\r ' + event.data )
+      console.log( user + ' ---> ' + event.towho + ' \n\r ' + event.data );
+    }
   });
   
   ws.on('close', (event) => {
