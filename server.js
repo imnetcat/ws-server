@@ -22,11 +22,11 @@ wss.on('connection', (sock) => {
     console.log(sock);
     console.log(sock.towho);
     if(sock.towho == "server"){
-      console.log(annonimusId + ' ---> [S] \n\r I am ' + sock.who);
+      console.log(annonimusId + ' ---> [S]  |:|  I am ' + sock.who);
       annonimusId = null;
       var user = '[C]-' + sock.who;
     }else{
-      console.log( user + ' ---> ' + sock.towho + '  ' + sock.data );
+      console.log( user + ' ---> ' + sock.towho + ' |:| ' + sock.data );
     }
   });
   
