@@ -20,7 +20,7 @@ wss.on('connection', (sock) => {
     if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
-      user = sock.who;
+      var user = sock.who;
     }else{
       console.log( user + ' ---> ' + sock.towho + ' \n\r ' + sock.data );
     }
