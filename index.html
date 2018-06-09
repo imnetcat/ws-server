@@ -16,7 +16,7 @@
             towho: "server",
           	data: "I am"
           };
-          sock.send(msg);
+          sock.send(JSON.stringify(msg));
           var msgbox = $('#msgbox');
           sock.onmessage = function (event) {
             msgbox.append($('<p>Server answer: ' + event.data));
