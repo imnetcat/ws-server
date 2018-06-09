@@ -14,9 +14,11 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
+  sock = JSON.parse(sock);
   var annonimusId = Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
+    sock = JSON.parse(sock);
     if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
@@ -27,6 +29,7 @@ wss.on('connection', (sock) => {
   });
   
   sock.on('close', (sock) => {
+    sock = JSON.parse(sock);
     console.log('[+]SERVER[+] ---> Client ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
