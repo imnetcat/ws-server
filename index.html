@@ -20,7 +20,7 @@
         sock.onmessage = function (event) {
           msgbox.append($('<p>Server answer: ' + event.data));
         };
-        $('body').append($('<h2>'+ nick + '</h2>));
+        $('body').append($('<h2>'+ nick + '</h2>'));
         $('body').append($('<div id="msgbox"></div>'));
         $('body').append($('<div tabindex="0" contenteditable="true" id="message" role="textbox" aria-multiline="true"></div>')); 
         $('body').append($('<button id="sendbtn">Send</button>'));
