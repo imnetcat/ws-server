@@ -10,7 +10,7 @@
         $('#auth').remove();
         var HOST = location.origin.replace(/^http/, 'ws')
         var sock = new WebSocket(HOST);
-        sock.onconnect = () => {
+        sock.onopen = () => {
           var query = {
           	who: nick,
             towho: "server",
