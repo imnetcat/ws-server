@@ -14,10 +14,9 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
-  var annonimusId = '[C]-' + (wss.clients.lenght + 1);
+  var annonimusId = '[C]-' + (wss.clients.size + 1);
   console.log('[S] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
-    console.log(wss.clients.lenght);
     var sock = JSON.parse(sock);
     if(sock.towho == "server"){
     }else{
