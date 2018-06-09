@@ -9,13 +9,13 @@ const INDEX = path.join(__dirname, 'index.html');
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log('[+]SERVER[+] ---> Listening on ' + PORT ));
+  .listen(PORT, () => console.log('[S]  Listening on ' + PORT ));
 
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
   var annonimusId = '[C]-' + Math.floor(Math.random() * (99999 - 10000) + 10000);
-  console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
+  console.log('[S] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
     console.log(sock);
     var sock = JSON.parse(sock);
@@ -32,7 +32,7 @@ wss.on('connection', (sock) => {
   
   sock.on('close', (sock) => {
     event = JSON.parse(sock);
-    console.log('[S] ---> ' + annonimusId+"@"+sock.who + ' disconnected');
+    console.log('[S] ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
 
