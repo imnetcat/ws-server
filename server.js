@@ -14,7 +14,7 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
-  var annonimusId = Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
+  var annonimusId = Math.floor(Math.random() * (99999 - 10000) + 10000);
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
     var sock = JSON.parse(sock);
