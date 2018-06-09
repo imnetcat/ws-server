@@ -17,7 +17,9 @@ wss.on('connection', (sock) => {
   var annonimusId = Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
   console.log('[+]SERVER[+] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
-    if(event.towho == "server"){
+    console.log(sock);
+    console.log(sock.data);
+    if(sock.towho == "server"){
       console.log(annonimusId + ' ---> [+]SERVER[+] \n\r I am ' + sock.who);
       annonimusId = null;
       var user = event.who;
