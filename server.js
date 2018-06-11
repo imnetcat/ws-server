@@ -18,17 +18,18 @@ wss.on('connection', (sock) => {
   console.log('[S] ---> Client '); // + annonimusId +' connected');
   sock.on('message', (sock) => {
     console.log(sock);
-    var sock = JSON.parse(sock);
+    var sock = Array.from(JSON.parse(sock));
     console.log(sock);
+    var sock = Object.create(JSON.parse(sock));
     if(sock.data.towho == "server"){
     }else{
-      console.log( user + ' ---> ' + sock.data.towho + ' |:| ' + sock.data.data );
+      console.log( sock.who + ' ---> ' + sock.towho + ' |:| ' + sock.data );
     }
   });
   
   sock.on('close', (sock) => {
     sock = JSON.parse(sock);
-    console.log('[S] ' + annonimusId+"@"+sock.data.who + ' disconnected');
+    console.log('[S] ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
 
