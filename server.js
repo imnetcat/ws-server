@@ -15,7 +15,7 @@ const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
   //var annonimusId = '[C]-' + (wss.clients.lenght + 1);
-  console.log('[S] ---> Client ' + annonimusId +' connected');
+  console.log('[S] ---> Client '); // + annonimusId +' connected');
   sock.on('message', (sock) => {
     var sock = JSON.parse(sock.data)
     if(sock.data.towho == "server"){
