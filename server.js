@@ -17,7 +17,7 @@ wss.on('connection', (sock) => {
   //var annonimusId = '[C]-' + (wss.clients.lenght + 1);
   console.log('[S] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
-    var sock = JSON.parse(sock.data"){
+    var sock = JSON.parse(sock.data){
     }else{
       console.log( user + ' ---> ' + sock.data.towho + ' |:| ' + sock.data.data );
     }
