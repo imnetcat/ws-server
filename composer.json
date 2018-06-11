@@ -12,7 +12,7 @@
   },
   "autoload": {
      "files": ["server.php"]
-  }
+  },
   "scripts": {
     "run": "server.php"
   }
