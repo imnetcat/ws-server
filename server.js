@@ -18,8 +18,6 @@ wss.on('connection', (sock) => {
   console.log('[S] ---> Client '); // + annonimusId +' connected');
   sock.on('message', (sock) => {
     console.log(sock);
-    var sock = Array.from(JSON.parse(sock));
-    console.log(sock);
     var sock = Object.create(JSON.parse(sock));
     if(sock.data.towho == "server"){
     }else{
