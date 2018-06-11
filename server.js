@@ -17,7 +17,9 @@ wss.on('connection', (sock) => {
   //var annonimusId = '[C]-' + (wss.clients.lenght + 1);
   console.log('[S] ---> Client '); // + annonimusId +' connected');
   sock.on('message', (sock) => {
-    var sock = JSON.parse(sock.data)
+    console.log(sock);
+    var sock = JSON.parse(sock);
+    console.log(sock);
     if(sock.data.towho == "server"){
     }else{
       console.log( user + ' ---> ' + sock.data.towho + ' |:| ' + sock.data.data );
@@ -25,7 +27,7 @@ wss.on('connection', (sock) => {
   });
   
   sock.on('close', (sock) => {
-    sock = JSON.parse(sock.data);
+    sock = JSON.parse(sock);
     console.log('[S] ' + annonimusId+"@"+sock.data.who + ' disconnected');
   });
 });
