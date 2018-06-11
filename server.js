@@ -25,7 +25,7 @@ wss.on('connection', (sock) => {
   });
   
   sock.on('close', (sock) => {
-    event = JSON.parse(sock);
+    sock = JSON.parse(sock);
     console.log('[S] ' + annonimusId+"@"+sock.who + ' disconnected');
   });
 });
