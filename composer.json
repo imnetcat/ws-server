@@ -1,0 +1,16 @@
+{
+  "authors": [
+    {
+      "name": "Crazy Hero",
+      "email": "crazyhero019@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require" : {
+    "php" : "*",
+    "ext-sockets": "*"
+  },
+  "scripts": {
+    "server": "@php server.php"
+  }
+}
