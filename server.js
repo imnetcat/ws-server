@@ -14,19 +14,18 @@ const server = express()
 const wss = new SocketServer({ server });
 
 wss.on('connection', (sock) => {
-  var annonimusId = '[C]-' + (wss.clients.size + 1);
+  //var annonimusId = '[C]-' + (wss.clients.lenght + 1);
   console.log('[S] ---> Client ' + annonimusId +' connected');
   sock.on('message', (sock) => {
-    var sock = JSON.parse(sock);
-    if(sock.towho == "server"){
+    var sock = JSON.parse(sock.data"){
     }else{
-      console.log( user + ' ---> ' + sock.towho + ' |:| ' + sock.data );
+      console.log( user + ' ---> ' + sock.data.towho + ' |:| ' + sock.data.data );
     }
   });
   
   sock.on('close', (sock) => {
-    sock = JSON.parse(sock);
-    console.log('[S] ' + annonimusId+"@"+sock.who + ' disconnected');
+    sock = JSON.parse(sock.data);
+    console.log('[S] ' + annonimusId+"@"+sock.data.who + ' disconnected');
   });
 });
 
