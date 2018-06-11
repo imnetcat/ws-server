@@ -11,6 +11,6 @@
     "ext-sockets": "*"
   },
   "scripts": {
-    "server": "@php server.php"
+    "run": "server.php"
   }
 }
